@@ -1,6 +1,6 @@
 # Javascript console
 
-## console.log()
+* console.log()
 It prints the message to the screen.You can see the output of your code.
 
 ```js
@@ -8,7 +8,7 @@ console.log("Hello")
 //output - Hello
 ```
 
-## console.error()
+* console.error()
 Dispalys an error message to the console
 
 ```js
@@ -16,7 +16,7 @@ console.error("Error")
 //Display error message with red icon
 ```
 
-## console.table()
+* console.table()
 Dispalys data in tabe format
 
 ```js
@@ -28,7 +28,7 @@ let users ={
 console.table(users);
 ```
 
-## console.assert()
+* console.assert()
 Logs a message if provided assertion is false.
 
 ```js
@@ -36,13 +36,14 @@ let age=8;
 consoe.assert(age>=18, "User is not an adult")
 ```
 
-## console.clear()
+* console.clear()
 Clears the console
+
 ```js
 console.clear();
 ```
 
-## console.group() & console.groupEnd()
+* console.group() & console.groupEnd()
 Groups logging statements together
 
 ```js

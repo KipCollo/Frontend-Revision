@@ -4,10 +4,13 @@ TypeScript offers full support for the class keyword introduced in ES2015.Class 
 TypeScript adds type annotations and other syntax to allow you to express relationships between classes and other types.
 
 Syntax:
+
 ```Typescript
 class Point {}
 ```
+
 ## Fields
+
 A field declaration creates a public writeable property on a class:
 
 ```Typescript
@@ -22,6 +25,7 @@ pt.y = 0;
 ```
 
 ## Constructors
+
 Class constructors are very similar to functions. You can add parameters with type annotations, default values, and overloads:
 
 ```Typescript

@@ -1,6 +1,6 @@
 # Functions
 
-Functions exist so we can reuse code. They are blocks of code that execute whenever they are invoked. Each function is typically written to perform a particular task. 
+Functions exist so we can reuse code. They are blocks of code that execute whenever they are invoked. Each function is typically written to perform a particular task.
 
 ## Defining and Calling Functions
 
@@ -20,6 +20,7 @@ function name(parameter1, parameter2, parameter3) {
 - When a function is defined, it is not yet executed.
 - To call and invoke a function's code, use the function's name followed by parentheses: `functionName()`.
 The code inside the function will execute when "something" invokes (calls) the function:
+
 1. When an event occurs (when a user clicks a button)
 2. When it is invoked (called) from JavaScript code
 3. Automatically (self invoked)
