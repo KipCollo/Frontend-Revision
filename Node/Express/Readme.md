@@ -10,6 +10,6 @@ Express is a minimal and flexible Node.js web application framework that provide
 
 Install the Express framework globally using NPM so that it can be used to create a web application using node terminal.
 
-```js
+```bash
 npm install express --save
 ```
