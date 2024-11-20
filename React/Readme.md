@@ -29,3 +29,16 @@ npx create-react-app <app-name>
 ```
 
 Using Vite
+
+## CLI Tools
+
+Here is the list of most common CLI tools for React development:
+
+1. [@article@create-react-app](https://create-react-app.dev)
+2. [@article@vite](https://vitejs.dev)
+
+- Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects.
+
+- Create React App is the CLI based tool and is the best way to start building a new single-page application in React.
+
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 14.0.0 and npm >= 5.6 on your machine.
