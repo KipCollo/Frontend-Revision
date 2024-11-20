@@ -1,4 +1,8 @@
-# AngulAR cli Reference
+# AngulAR cli
+
+The Angular CLI is a command-line interface tool that you use to initialize, develop, scaffold, and maintain Angular applications directly from a command shell. we can install angular latest CLI using the following command
+
+`npm install -g @angular/cli`
 
 1. ng new <project-name> [ options ] - Creates a new Angular project. By default, the project is created under the current directory.
 
@@ -118,3 +122,37 @@ Options:
 --browsers, --colors, --reporters, --port, --log-level - Those arguments are passed directlY to karma.
 
 13. ng version - Outputs the version of angular-cli,node and the operating system.
+
+## Ng build
+
+The command can be used to build a project of type "application" or "library". When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications.
+
+## Ng serve
+
+ng serve — This command builds, deploy, serves and every time watches your code changes. if find any change in code it builds and serves that code automatically. How do Angular builds? After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
+
+## Ng generate
+
+ng generate is used to create the component in angular project. These are the two main ways to generate a new component in Angular: using ng g c <component_name>, and using ng generate component <component_name>. Using either of these two commands, the new component can be generated pretty easily and followed by the suitable component name of your choice.
+
+## Ng test
+
+ng test is used to runs unit tests in angular project.
+
+`ng test <project> [options]` | `ng t <project> [options]`
+
+## Ng e2e
+
+End-to-end testing (E2E) of Angular applications is performed using the Protractor testing framework, which is created by the Angular team themselves. Protractor can perform end to end tests on Angular applications that are running in a real browser by interacting with it, similar to that of an end-user.
+
+## Ng new
+
+`$ ng new [name]`
+
+That’s the default usage of the command and creating a new project folder with name. The project which is created in that folder is containing:
+
+The default Angular project, All dependencies installed in node_modules folder , Testing files for each components
+
+## Schematics
+
+A schematic is a template-based code generator that supports complex logic. It is a set of instructions for transforming a software project by generating or modifying code.
