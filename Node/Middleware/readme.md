@@ -14,6 +14,7 @@ It includes:
   b. express.static()
   c. express.json()
   d. express.urlencoded()
+  e. Route handle methods i.e (req,res)=>{}
 
 **Custom Middleware**: They are middleware created in our app.
 

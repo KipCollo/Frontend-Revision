@@ -8,9 +8,26 @@ Components can either be created using the class based approach or a functional 
 
 Although the class components are supported in React, it is encouraged to write functional components and make use of hooks in modern React applications.
 
+```js
+class ClassName extends Component{
+    state={};
+    render(){
+        return (<h1></h1>)
+    }
+}
+```
+
 ## Functional Components
 
 Functional components are some of the more common components that will come across while working in React. These are simply JavaScript functions. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
+
+```js
+function FunctionName(){
+    return <h1></h1>
+}
+
+export default FunctionName;
+```
 
 ## JSX
 

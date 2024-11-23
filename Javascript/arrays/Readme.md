@@ -116,3 +116,32 @@ Try
 unshift() 	Add one or more elements to the beginning of the given array. 	
 Try
 values() 	Return a new array Iterator object that contains the values for each index in the array.
+
+## map function
+
+The map function creates a new array by calling a provided function on every element in the calling array.
+
+use of the filter function in JavaScript?
+
+The filter function creates a new array with all elements that pass the test implemented by the provided function.
+19. What is the use of the reduce function in JavaScript?
+
+The reduce function executes a reducer function on each element of the array, resulting in a single output value.
+20. What is the use of the forEach function in JavaScript?
+
+The forEach function executes a provided function once for each array element.
+
+difference between slice and splice methods in JavaScript?
+
+    slice: Returns a shallow copy of a portion of an array into a new array object.
+    splice: Changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+
+48. What is the use of the Array.from() method in JavaScript?
+
+The Array.from() method creates a new, shallow-copied array instance from an array-like or iterable object.
+49. What is the use of the Array.isArray() method in JavaScript?
+
+The Array.isArray() method determines whether the passed value is an array.
+50. What is the use of the Array.prototype.sort() method in JavaScript?
+
+The Array.prototype.sort() method sorts the elements of an array in place and returns the sorted array.

@@ -1,7 +1,6 @@
 # Introduction to the DOM
 
-Client-side JavaScript exists to turn static HTML documents into interactive web applications. So scripting the content of web pages is really the central purpose of
-JavaScript.Every Window object has a document property that refers to a Document object. The Document object represents the content of the window, and it is the subject of this section. The Document object does not stand alone, however. It is the central object in the DOM for representing and manipulating document content.
+Client-side JavaScript exists to turn static HTML documents into interactive web applications. So scripting the content of web pages is really the central purpose ofJavaScript.Every Window object has a document property that refers to a Document object. The Document object represents the content of the window, and it is the subject of this section. The Document object does not stand alone, however. It is the central object in the DOM for representing and manipulating document content.
 
 The Document Object Model (DOM) is the data representation of the objects that comprise the structure and content of a document on the web. The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.
 
@@ -33,6 +32,25 @@ These two are equivalent. In the first, item() is the single method on the nodeL
 5. **Attr** When an attribute is returned by a member (e.g., by the createAttribute() method), it is an object reference that exposes a special (albeit small) interface for attributes. Attributes are nodes in the DOM just like elements are, though you may rarely use them as such.
 NamedNodeMap. A namedNodeMap is like an array, but the items are accessed by name or index, though this latter case is merely a convenience for enumeration, as they are in no particular order in the list. A namedNodeMap has an item() method for this purpose, and you can also add and remove items from a namedNodeMap.
 
+## Document
+
+It refers to page which will display browser window.
+
+Every HTML elements has Javascript Object with properties and methods to manipulate it.E.g for a button properties can be (innerHTML,style,firstChild) and methods could be (click(),append(),setattribute())
+
+Has the methods:
+
+1. write()/writeln()-Used to siaplay data on docuent.
+2. forms()-used to process elements in a from.
+3. links()- Used to hold number of links in webpage.
+4. close()-Used to stop current process on document.
+
+```js
+document;
+document.firstElementChild
+document.firstElementChild.lastElementChild
+```
+
 ## Accessing the DOM
 
 Client-side JavaScript programs often need to manipulate one or more elements within the document. The global document property refers to the Document object,and the Document object has head and body properties that refer to the Element objects for the <head> and <body> tags, respectively. But a program that wants to manipulate an element embedded more deeply in the document must somehow obtain or select the Element objects that refer to those document elements.
@@ -44,9 +62,11 @@ When you create a script, whether inline in a <script> element or included in th
 The Document interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree.
 
 The DOM tree includes elements such as <body> and <table>, among many others. It provides functionality globally to the document, like how to obtain the page's URL and create new elements in the document.
+
 ```js
 console.dir(document)
 ```
+
 The Document interface describes the common properties and methods for any kind of document.
 
 ```js

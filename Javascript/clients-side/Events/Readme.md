@@ -99,3 +99,8 @@ tion() method of the event object.
 ## Dispatching Custom Events
 
 Client-side JavaScript’s event API is a relatively powerful one, and you can use it to define and dispatch your own events.
+
+## event bubbling and event capturing
+
+- Event bubbling: The event is first captured and handled by the innermost element and then propagated to outer elements.
+- Event capturing: The event is first captured by the outermost element and propagated to the innermost element.

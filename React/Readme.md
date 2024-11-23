@@ -1,19 +1,6 @@
 # React
 
-React is a JavaScript library forbuilding user interfaces
-
-1. Objects: Collections of key value pairs.
-
-```js
-
-const Person = {
-    name: "Collo",
-    walk: function(){},
-    talk(){}
-};
-
-Person.talk()
-```
+React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.
 
 ## Creating React Project
 
@@ -42,3 +29,16 @@ Here is the list of most common CLI tools for React development:
 - Create React App is the CLI based tool and is the best way to start building a new single-page application in React.
 
 It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 14.0.0 and npm >= 5.6 on your machine.
+
+1. Objects: Collections of key value pairs.
+
+```js
+
+const Person = {
+    name: "Collo",
+    walk: function(){},
+    talk(){}
+};
+
+Person.talk()
+```
