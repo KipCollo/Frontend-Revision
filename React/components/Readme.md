@@ -1,6 +1,8 @@
 # Components
 
-Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.
+Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.Every React app has on root component called *App*.This component rep tye entire application and contains other child components.
+
+Use React snippets to help in development of components
 
 ## Class Components
 
@@ -8,22 +10,57 @@ Components can either be created using the class based approach or a functional 
 
 Although the class components are supported in React, it is encouraged to write functional components and make use of hooks in modern React applications.
 
-```js
+```jsx
 class ClassName extends Component{
     state={};
     render(){
         return (<h1></h1>)
     }
 }
+
+export default ClassName;
+```
+
+TODO More on Lists and unique keys in lists
+
+- Rendering Lits in React:-
+
+```jsx
+state={
+    tags:["tag1","tag2","tag3"]
+};
+render(){
+    return (<
+    <ul>
+    {this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}
+     </ul>)
+ }
+```
+
+- Conditional Rendering:-
+
+```jsx
+state={
+    tags:["tag1","tag2","tag3"]
+};
+
+renderItems(){
+    if(this.state.tags.lenght==0) return <p>No Items</p>
+    else return <ul>{this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}</ul>
+}
+render(){
+    return (<
+    <div>{this.renderItems()}</div>)
+ }
 ```
 
 ## Functional Components
 
 Functional components are some of the more common components that will come across while working in React. These are simply JavaScript functions. We can create a functional component to React by writing a JavaScript function. These functions may or may not receive data as parameters. In the functional Components, the return value is the JSX code to render to the DOM tree. Functional components can also have state which is managed using React hooks.
 
-```js
+```jsx
 function FunctionName(){
-    return <h1></h1>
+    return (<h1></h1>)
 }
 
 export default FunctionName;

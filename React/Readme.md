@@ -1,6 +1,7 @@
 # React
 
 React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.
+React.js is a JavaScript library used for building user interfaces. It allows developers to create reusable UI components and efficiently update the UI when the data changes.
 
 ## Creating React Project
 
@@ -42,3 +43,7 @@ const Person = {
 
 Person.talk()
 ```
+
+## Components
+
+Functional components are stateless and are typically written as plain JavaScript functions. They are simpler and easier to test. Class components, on the other hand,have a state, can use lifecycle methods, and are written as ES6 classes.
