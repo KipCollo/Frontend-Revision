@@ -27,6 +27,14 @@ A Template driven form is the simplest form we can build in Angular. It is mainl
 
 The "ngOnInit" method is a lifecycle hook in Angular that is used in forms to initialize and set up the form controls and validators. It is called after the component has been initialized and is a good place to set the initial values of the form or set up any form-related logic.
 
+Template-driven forms use two-way data binding to update the data model in the component as changes are made in the template and vice versa.
+
+Template-driven forms rely on directives defined in the FormsModule.
+
+1. NgModel- Reconciles value changes in the attached form element with changes in the data model, allowing you to respond to user input with input validation and error handling.
+2. NgForm- Creates a top-level FormGroup instance and binds it to a <form> element to track aggregated form value and validation status. As soon as you import FormsModule, this directive becomes active by default on all <form> tags. You don't need to add a special selector.
+3. NgModelGroup- Creates and binds a FormGroup instance to a DOM element.
+
 ## Common form foundation classes
 
 Both reactive and template-driven forms are built on the following base classes.

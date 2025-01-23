@@ -27,9 +27,88 @@ Angular's Dependency Injection (DI) is a design pattern and mechanism for provid
 for the decoupling of components and the reusability of services. In Angular, DI is managed by the Angular injector, which is responsible for creating and providing
 instances of dependencies. DI is used by specifying dependencies in the constructor of a class and allowing Angular to resolve and inject the dependencies automatically.
 
-## Services
+Two main roles exist in the DI system: dependency consumer and dependency provider.
 
-Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
+Angular facilitates the interaction between dependency consumers and dependency providers using an abstraction called Injector. When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Angular creates an application-wide injector (also known as "root" injector) during the application bootstrap process, as well as any other injectors as needed. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
+
+- Providing dependency
+Imagine there is a class called HeroService that needs to act as a dependency in a component.
+
+The first step is to add the @Injectable decorator to show that the class can be injected.
+
+```ts
+@Injectable()
+class HeroService {}
+```
+
+The next step is to make it available in the DI by providing it. A dependency can be provided in multiple places:
+
+At the Component level, using the providers field of the @Component decorator. In this case the HeroService becomes available to all instances of this component and other components and directives used in the template. For example:
+
+```ts
+@Component({
+  standalone: true,
+  selector: 'hero-list',
+  template: '...',
+  providers: [HeroService]
+})
+class HeroListComponent {}
+```
+
+When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
+
+Use the providers field of the ApplicationConfig object passed to the bootstrapApplication function to provide a service or other Injectable at the application level. In this scenario, the HeroService is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider in the ApplicationConfig, the same instance of a service is available to all applicable components, directives and pipes.
+
+For NgModule based applications, use the providers field of the @NgModule decorator to provide a service or other Injectable available at the application level.
+
+To understand all edge-cases, see Hierarchical injectors. For example:
+
+```ts
+export const appConfig: ApplicationConfig = {
+    providers: [
+      { provide: HeroService },
+    ]
+};
+```
+
+Then, in main.ts:
+
+```ts
+bootstrapApplication(AppComponent, appConfig)
+```
+
+At the application root level, which allows injecting it into other classes in the application. This can be done by adding the providedIn: 'root' field to the @Injectable decorator:
+
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+class HeroService {}
+```
+
+When you provide the service at the root level, Angular creates a single, shared instance of the HeroService and injects it into any class that asks for it. Registering the provider in the @Injectable metadata also allows Angular to optimize an app by removing the service from the compiled application if it isn't used, a process known as tree-shaking.
+
+- Injecting a dependency:- The most common way to inject a dependency is to declare it in a class constructor. When Angular creates a new instance of a component, directive, or pipe class, it determines which services or other dependencies that class needs by looking at the constructor parameter types. For example, if the HeroListComponent needs the HeroService, the constructor can look like this:
+
+```ts
+@Component({ … })
+class HeroListComponent {
+  constructor(private service: HeroService) {}
+}
+```
+
+Another option is to use the inject method:
+
+```ts
+@Component({ … })
+class HeroListComponent {
+  private service = inject(HeroService);
+}
+```
+
+When Angular discovers that a component depends on a service, it first checks if the injector has any existing instances of that service. If a requested service instance doesn't yet exist, the injector creates one using the registered provider, and adds it to the injector before returning the service to Angular.
+
+When all requested services have been resolved and returned, Angular can call the component's constructor with those services as arguments.
 
 ## Directive
 
@@ -229,3 +308,235 @@ the HttpInterceptor interface and registering the interceptor in the application
 
 Angular's ElementRef is a class that represents a reference to a DOM element. It provides access to the underlying DOM element and allows for direct manipulation of
 its properties and methods. It is used by injecting the ElementRef into a component or directive and accessing its nativeElement property to interact with the DOM element.
+
+## Observables
+
+Observables are a technique for event handling, asynchronous programming, and handling multiple values emitted over time.
+
+The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers, and notifies them automatically of state changes. This pattern is similar (but not identical) to the publish/subscribe design pattern.
+
+Angular apps tend to use the RxJS library for Observables. This overview covers just the basics of observables as implemented by that library.
+
+Observables are declarative. You define a function for publishing values — the source — but that function is not executed until a consumer subscribes to the observable by calling the observable's subscribe method.
+
+This subscriber then receives notifications from the observable until it completes, emits an error, or the consumer unsubscribes.
+
+An observable can deliver multiple values of any type — literals, messages, or events — depending on the context. A stream of keystrokes, an HTTP response, and the ticks of an interval timer are among the typical observable sources. The observable API applies consistently across all of these diverse sources.
+
+An observable can emit one, many, or no values while subscribed. It can emit synchronously (emit the first value immediately) or asynchronously (emit values over time).
+
+Because setup and teardown logic are both handled by the observable, your application code only needs to worry about subscribing to consume values and unsubscribing when done.
+
+RxJS Operators enable transformations of observable values. An Operator takes an observable source, manipulates the values from that source in some useful way, and returns a new observable of the transformed values. When you subscribe to that new observable, you get the results of the intermediate transformations.
+
+This ability to progressively transform observable values - and even combine multiple observable sources into a consolidated observable - is one of the most powerful and appealing of RxJS features.
+
+Accordingly, observables are used extensively within Angular applications and within Angular itself.
+
+- Observable:- An observable is an object that can emit one or more values over time.
+
+Here's a simple observable that will emit 1, then 2, then 3, and then completes.
+
+An observable emitting 3 integers
+
+```ts
+import { of } from 'rxjs';
+
+const numbers$ = of(1, 2, 3); // simple observable that emits three values
+```
+
+The RxJS method, of(...values), creates an Observable instance that synchronously delivers each of the values provided as arguments.
+
+Naming conventions for observables
+Notice the "$" on the end of the observable name. The "$" signifies that the variable is an observable "$tream" of values.
+
+This is a widely adopted naming convention for observables.
+
+Not everyone likes it. Because Angular applications are written in TypeScript and code editors are good at revealing an object's type, you can usually tell when a variable is an observable. Many feel the "$" suffix is unnecessary and potentially misleading.
+
+On the other hand, the trailing "$" can help you quickly identify observables when scanning the code. Also, if you want a property to hold the most recent value emitted from an observable, it can be convenient to use the source observable's root name without the "$".
+
+The Angular framework and tooling do not enforce this convention. Feel free to use it or not.
+
+- Subscribing:- An observable begins publishing values only when someone subscribes to it. That "1-2-3" observable won't emit any numbers until you subscribe by calling the observable's subscribe() method.
+
+If you want to begin publishing but don't care about the values or when it completes, you can call subscribe with no arguments at all
+
+Start publishing
+
+```ts
+numbers$.subscribe();
+```
+
+You're more likely interested in doing something with the values. Pass in a method - called a "next" handler - that does something every time the observable emits a value.
+
+Subscribe to emitted values
+
+```ts
+numbers$.subscribe(
+  value => console.log('Observable emitted the next value: ' + value)
+);
+```
+
+Passing a next() function into subscribe is a convenient syntax for this most typical case. If you also need to know when the observable emits an error or completes, you'll have to pass in an Observer instead.
+
+- Defining observers
+An observable has three types of notifications: "next", "error", and "complete".
+
+An Observer is an object whose properties contain handlers for these notifications.
+
+NOTIFICATION TYPE DETAILS
+
+next- A handler for each delivered value. Called zero or more times after execution starts.
+error- A handler for an error notification. An error halts execution of the observable instance and unsubscribes.
+complete- A handler for the execution-complete notification. Do not expect next or error to be called again. Automatically unsubscribes.
+Here is an example of passing an observer object to subscribe:
+
+Subscribe with full observer object
+
+```ts
+numbers$.subscribe({
+  next: value => console.log('Observable emitted the next value: ' + value),
+  error: err => console.error('Observable emitted an error: ' + err),
+  complete: () => console.log('Observable emitted the complete notification')
+});
+```
+
+Alternatively, you can create the Observer object with functions named next(), error() and complete().
+
+```ts
+numbers$.subscribe({
+  next(value) { console.log('Observable emitted the next value: ' + value); },
+  error(err)  { console.error('Observable emitted an error: ' + err); },
+  complete()  { console.log('Observable emitted the complete notification'); }
+});
+```
+
+This works because JavaScript turns the function names into the property names.
+
+All of the handler properties are optional. If you omit a handler for one of these properties, the observer ignores notifications of that type.
+
+- Error handling
+Because observables can produce values asynchronously, try/catch will not effectively catch errors. Instead, you handle errors by specifying an error function on the observer.
+
+Producing an error also causes the observable to clean up subscriptions and stop producing values.
+
+```ts
+numbers$.subscribe({
+  next: value => console.log('Observable emitted the next value: ' + value),
+  error: err => console.error('Observable emitted an error: ' + err),
+});
+```
+
+Error handling (and specifically recovering from an error) is covered in more detail in a later section.
+
+- Creating observables
+The RxJS library contains a number of functions for creating observables. Some of the most useful are covered later.
+
+You can also use the Observable constructor to create an observable stream of any type. The constructor takes as its argument the subscriber function to run when the observable's subscribe() method executes.
+
+A subscriber function receives an Observer object, and can publish values to the observer's next(), error, and complete handlers.
+
+For example, to create an observable equivalent to the of(1, 2, 3) above, you could write something like this:
+
+Create observable with constructor
+
+```ts
+// This function runs when subscribe() is called
+function sequenceSubscriber(observer: Observer<number>) {
+  // synchronously deliver 1, 2, and 3, then completes
+  observer.next(1);
+  observer.next(2);
+  observer.next(3);
+  observer.complete();
+
+  // Return the unsubscribe function.
+  // This one doesn't do anything
+  // because values are delivered synchronously
+  // and there is nothing to clean up.
+  return {unsubscribe() {}};
+}
+
+// Create a new Observable that will deliver the above sequence
+const sequence = new Observable(sequenceSubscriber);
+
+// Execute the Observable and print the result of each notification
+sequence.subscribe({
+  next(num) { console.log(num); },
+  complete() { console.log('Finished sequence'); }
+});
+
+// Logs:
+// 1
+// 2
+// 3
+// Finished sequence
+```
+
+Geolocation example
+The following example demonstrates the concepts above by showing how to create and consume an observable that reports geolocation updates.
+
+Observe geolocation updates
+
+```ts
+// Create an Observable that will start listening to browser geolocation updates
+// when a consumer subscribes.
+const locations = new Observable((observer) => {
+  let watchId: number;
+
+  // The geolocation API (if it exists) provides values to publish
+  if ('geolocation' in navigator) {
+    watchId = navigator.geolocation.watchPosition(
+      (position: GeolocationPosition) => observer.next(position),
+      (error: GeolocationPositionError) => observer.error(error)
+    );
+  } else {
+    observer.error('Geolocation not available');
+  }
+
+  // When the consumer unsubscribes, stop listening to geolocation changes.
+  return {
+    unsubscribe() {
+      navigator.geolocation.clearWatch(watchId);
+    }
+  };
+});
+
+// Call subscribe() to start listening for geolocation updates.
+const locationsSubscription = locations.subscribe({
+  next(position) {
+    console.log('Current Position: ', position);
+  },
+  error(msg) {
+    console.log('Error Getting Location: ', msg);
+  }
+});
+
+// Stop listening for location after 10 seconds
+setTimeout(() => {
+  locationsSubscription.unsubscribe();
+}, 10000);
+Last reviewed on Fri Aug 25 2023
+```
+
+@angular/common:- Implements fundamental Angular framework functionality, including directives and pipes, location services used in routing, HTTP services, localization support, and so on.
+The CommonModule exports are re-exported by BrowserModule, which is included automatically in the root AppModule when you create a new app with the CLI new command.
+@angular/common/http:- Implements an HTTP client API for Angular apps that relies on the XMLHttpRequest interface exposed by browsers.
+@angular/common/http/testing:- Supplies a testing module for the Angular HTTP subsystem.
+@angular/common/testing:- Supplies infrastructure for testing functionality supplied by @angular/common.
+@angular/common/upgrade:- Provides tools for upgrading from the $location service provided in AngularJS to Angular's unified location service.
+
+@angular/core:- Implements Angular's core functionality, low-level services, and utilities.
+
+  1. Defines the class infrastructure for components, view hierarchies, change detection, rendering, and event handling.
+  2. Defines the decorators that supply metadata and context for Angular constructs.
+  3. Defines infrastructure for dependency injection (DI), internationalization (i18n), and various testing and debugging facilities.
+@angular/core/global:- Exposes a set of functions in the global namespace which are useful for debugging the current state of your application. These functions are exposed via the global ng "namespace" variable automatically when you import from @angular/core and run your application in development mode. These functions are not exposed when the application runs in a production mode.
+@angular/core/rxjs-interop:- Includes utilities related to using the RxJS library in conjunction with Angular's signal-based reactivity system.
+@angular/core/testing:- Provides infrastructure for testing Angular core functionality.
+
+@angular/forms:- Implements a set of directives and providers to communicate with native DOM elements when building forms to capture user input.
+
+@angular/animations:- Implements a domain-specific language (DSL) for defining web animation sequences for HTML elements as multiple transformations over time.
+
+@angular/service-worker:- Implements a service worker for Angular apps. Adding a service worker to an Angular app is one of the steps for turning it into a Progressive Web App (also known as a PWA).
