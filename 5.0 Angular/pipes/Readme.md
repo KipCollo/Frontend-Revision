@@ -2,8 +2,7 @@
 
 Angular pipes are a feature that transforms data before displaying it in the template.They are used for tasks such as formatting dates, numbers, and strings, as well as creating custom transformations.
 
-Angular's Pipe is a class that allows for the creation of custom data transformation functions that can be applied in templates using the pipe syntax. Pipes are used to format, filter, or transform data before displaying it in the template. They are used by creating a custom pipe class with the @Pipe decorator and implementing the
-transform() method to define the transformation logic. The pipe can then be used in the template by adding it to the pipe syntax.
+Angular's Pipe is a class that allows for the creation of custom data transformation functions that can be applied in templates using the pipe syntax. Pipes are used to format, filter, or transform data before displaying it in the template. They are used by creating a custom pipe class with the @Pipe decorator and implementing the transform() method to define the transformation logic. The pipe can then be used in the template by adding it to the pipe syntax.
 
 ## Custom Pipes
 

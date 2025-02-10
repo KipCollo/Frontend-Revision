@@ -98,7 +98,6 @@ The ngModel directive, which implements two-way data binding, is an example of a
 
 The "ng-app" directive is used to define the root element of an AngularJS application.It initializes the application and auto-bootstraps the AngularJS framework.
 
-
 The "ngStyle" directive is used to dynamically apply styles to an element based on the values of expressions in the component. It allows for dynamic styling without directly manipulating the CSS classes.
 
 The "ngClass" directive is used to conditionally apply CSS classes to an element based on the values of expressions in the component. It allows for dynamic class

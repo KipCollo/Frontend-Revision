@@ -2,7 +2,7 @@
 
 Angular is a front-end JavaScript framework i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
 
-Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.
+Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.Maintained by a dedicated team at Google, Angular provides a broad suite of tools, APIs, and libraries to simplify and streamline your development workflow. Angular gives you a solid platform on which to build fast, reliable applications that scale with both the size of your team and the size of your codebase.
 
 The key features of Angular include two-way data binding, dependency injection, modular architecture, component-based development, and a powerful template system.
 
@@ -15,6 +15,10 @@ AngularJS, also known as Angular 1.x, is an older version of Angular. Angular, s
 @angular/core,@angular/compiler and @angular/http were introduced in version 2.3.0 while @angular/router came in version 3.3.0.To align this version Angular team decided to avoid confusion it went to Angular 4.0 directly.Later to avoid confusion it dropped the version and used the name "Angular".
 
 Angular requires Node.js runtime environment.
+
+Angular supports both server-side rendering (SSR) and static site generation including support for (SSG) along with full DOM hydration.blocks in templates make it templates simple to declaratively divide your into lazy-loadable parts.
+Angular router provides a feature-rich navigation toolkit, route guards, data resolution, lazy-loading, and much more.
+Angular form module provides a standardized system for form participation and validation.
 
 ## Angular Modules
 
