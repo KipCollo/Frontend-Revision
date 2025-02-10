@@ -14,6 +14,8 @@ Structural directives are directives which change the DOM layout by adding and r
 
 Angular provides a set of built-in structural directives (such as NgIf, NgForOf, NgSwitch and others) which are commonly used in all Angular projects
 
+I a directive modifies the structure of template by removing or adding an element you use an aestrik.E.g *ngFor
+
 - The [ngIf] directive - is used to conditionally display or hide elements based on a given expression. It adds or removes elements from the DOM based on the truthiness of the expression.
 A structural directive that conditionally includes a template based on the value of an expression coerced to Boolean. When the expression evaluates to true, Angular renders the template provided in a then clause, and when false or null, Angular renders the template provided in an optional else clause. The default template for the else clause is blank.
 
@@ -69,7 +71,18 @@ Or use this approach for consistency:-
 </ng-template>
 ```
 
-- The [ngFor] directive -
+- The [ngFor] directive - The "ngFor" directive is used to iterate over a collection of items in Angular and generate the corresponding HTML elements for each item.
+The "trackBy" function is used in conjunction with the ngFor directive in Angular to improve the performance of rendering lists. It provides away to uniquely identify and track items in the collection, allowing Angular to optimize the rendering process by reusing existing DOM elements instead of recreating them.
+
+```ts
+courses = ["course1","course2","course3"]
+```
+
+```html
+<ul>
+   <li *ngFor="let course of courses">{{ course }}</li>
+</ul>
+```
 
 - The [ngSwitch] directive on a container specifies an expression to match against. The expressions to match are provided by ngSwitchCase directives on views within the container.
 
@@ -85,8 +98,6 @@ The ngModel directive, which implements two-way data binding, is an example of a
 
 The "ng-app" directive is used to define the root element of an AngularJS application.It initializes the application and auto-bootstraps the AngularJS framework.
 
-The "ngFor" directive is used to iterate over a collection of items in Angular and generate the corresponding HTML elements for each item.
-The "trackBy" function is used in conjunction with the ngFor directive in Angular to improve the performance of rendering lists. It provides away to uniquely identify and track items in the collection, allowing Angular to optimize the rendering process by reusing existing DOM elements instead of recreating them.
 
 The "ngStyle" directive is used to dynamically apply styles to an element based on the values of expressions in the component. It allows for dynamic styling without directly manipulating the CSS classes.
 

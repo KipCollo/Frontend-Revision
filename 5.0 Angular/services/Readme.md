@@ -49,66 +49,15 @@ export class HeroService {
 }
 ```
 
-## Dependency injection (DI)
-
-Dependency injection (DI) is the part of the Angular framework that provides components with access to services and other resources. Angular provides the ability for you to inject a service into a component to give that component access to the service.
-
-Add the @Injectable() decorator to a service class so that Angular can inject it into a component as a dependency; the optional argument tells Angular where to register this class by default.
-
-```ts
-@Injectable({providedIn: 'root'})
-export class HeroService {}
-```
-
-Something injectable must be registered with an injector before it can be created and used.
-
-Register an injectable with a provider, an object that tells an injector how to obtain or create a dependency. For a service class, the provider is typically the class itself.
-
-You don't have to create injectors. Under the hood Angular creates an application-wide root injector for you during the bootstrap process. It creates additional child injectors as needed.
-
-An injectable dependency doesn't have to be a class — it could be a function, for example, or a value.
-
-When Angular creates a new instance of a component class, it determines which services or other dependencies that component needs by looking at the constructor parameter types. For example, the constructor of HeroListComponent needs HeroService.
-
-```ts
-src/app/hero-list.component.ts (constructor)
-constructor(private service: HeroService) { }
-```
-
-When Angular discovers that a component depends on a service, it first checks if the injector has any existing instances of that service. If a requested service instance doesn't yet exist, the injector makes one using the registered provider and adds it to the injector before returning the service to Angular.
-
-When all requested services have been resolved and returned, Angular can call the component's constructor with those services as arguments.
-
-- Providing services
-
-You must register at least one provider of any service you are going to use. The provider can be part of the service's own metadata, making that service available everywhere, or you can register providers with specific components. You register providers in the metadata of the service (in the @Injectable() decorator) or @Component() metadata
-
-By default, the Angular CLI command ng generate service registers a provider with the root injector for your service by including provider metadata in the @Injectable() decorator. The tutorial uses this method to register the provider of HeroService class definition.
-
-```ts
-hero.service.ts (provide in root)
-@Injectable({providedIn: 'root'})
-export class HeroService {}
-```
-
-When you provide the service at the root level, Angular creates a single, shared instance of HeroService and injects it into any class that asks for it. Registering the provider in the @Injectable() metadata also allows Angular to optimize an app by removing the service from the compiled application if it isn't used, a process known as tree-shaking.
-
-When you register a provider at the component level, you get a new instance of the service with each new instance of that component. At the component level, register a service provider in the providers property of the @Component() metadata.
-
-```ts
-src/app/hero-list.component.ts (component providers)
-@Component({
-  standalone: true,
-  selector:    'app-hero-list',
-  templateUrl: './hero-list.component.html',
-  imports:     [ NgFor, NgIf, HeroDetailComponent ],
-  providers:  [ HeroService ]
-})
-```
-
 ## ngZone in Angular
 
 ngZone is a service in Angular that provides a way to execute code outside or inside the Angular zone. It helps in managing change detection and optimizing
 performance.
 
 The "ngZone" service provides a way to execute code within or outside the Angular zone. It is used to handle change detection and trigger Angular's rendering cycle.
+
+To generate a service using CLI:-
+
+```sh
+ng generate service <service-name>
+```

@@ -17,9 +17,13 @@ Almost all HTML syntax is valid template syntax. However, because an Angular tem
 
 To eliminate the risk of script injection attacks, Angular does not support the *script* element in templates. Angular ignores the *script* tag and outputs a warning to the browser console.
 
-## Interpolation
+- Interpolation :- Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
 
-Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters. Angular replaces currentCustomer with the string value of the corresponding component property.
+```ts
+<h2>{{title}}</h2>
+
+title: string ="Home";
+```
 
 ## Property binding
 

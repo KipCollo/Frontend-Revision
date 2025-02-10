@@ -1,6 +1,6 @@
 # Angular
 
-Angular is an strong front-end JavaScript framework which means that it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
+Angular is a front-end JavaScript framework i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
 
 Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.
 
@@ -12,103 +12,13 @@ AngularJS was the older version of Angular, whose support officially ended in Ja
 
 AngularJS, also known as Angular 1.x, is an older version of Angular. Angular, starting from version 2, is a complete rewrite of AngularJS with improved performance and enhanced features.
 
+@angular/core,@angular/compiler and @angular/http were introduced in version 2.3.0 while @angular/router came in version 3.3.0.To align this version Angular team decided to avoid confusion it went to Angular 4.0 directly.Later to avoid confusion it dropped the version and used the name "Angular".
+
+Angular requires Node.js runtime environment.
+
 ## Angular Modules
 
 Modules in Angular act like a container where we can group the components, directives, pipes, and services, related to the application.
-
-## Dependency Injection
-
-Dependency Injection is one of the fundamental concepts in Angular. DI is wired into the Angular framework and allows classes with Angular decorators, such as Components, Directives, Pipes, and Injectables, to configure dependencies that they need.
-
-Dependency injection is a design pattern used in Angular to provide dependencies toa component from an external source. It helps in creating loosely coupled and
-testable code.
-
-Angular's Dependency Injection (DI) is a design pattern and mechanism for providingdependencies to components, services, and other objects in an application. It allows
-for the decoupling of components and the reusability of services. In Angular, DI is managed by the Angular injector, which is responsible for creating and providing
-instances of dependencies. DI is used by specifying dependencies in the constructor of a class and allowing Angular to resolve and inject the dependencies automatically.
-
-Two main roles exist in the DI system: dependency consumer and dependency provider.
-
-Angular facilitates the interaction between dependency consumers and dependency providers using an abstraction called Injector. When a dependency is requested, the injector checks its registry to see if there is an instance already available there. If not, a new instance is created and stored in the registry. Angular creates an application-wide injector (also known as "root" injector) during the application bootstrap process, as well as any other injectors as needed. In most cases you don't need to manually create injectors, but you should know that there is a layer that connects providers and consumers.
-
-- Providing dependency
-Imagine there is a class called HeroService that needs to act as a dependency in a component.
-
-The first step is to add the @Injectable decorator to show that the class can be injected.
-
-```ts
-@Injectable()
-class HeroService {}
-```
-
-The next step is to make it available in the DI by providing it. A dependency can be provided in multiple places:
-
-At the Component level, using the providers field of the @Component decorator. In this case the HeroService becomes available to all instances of this component and other components and directives used in the template. For example:
-
-```ts
-@Component({
-  standalone: true,
-  selector: 'hero-list',
-  template: '...',
-  providers: [HeroService]
-})
-class HeroListComponent {}
-```
-
-When you register a provider at the component level, you get a new instance of the service with each new instance of that component.
-
-Use the providers field of the ApplicationConfig object passed to the bootstrapApplication function to provide a service or other Injectable at the application level. In this scenario, the HeroService is available to all components, directives, and pipes declared in this NgModule or other NgModule which is within the same ModuleInjector applicable for this NgModule. When you register a provider in the ApplicationConfig, the same instance of a service is available to all applicable components, directives and pipes.
-
-For NgModule based applications, use the providers field of the @NgModule decorator to provide a service or other Injectable available at the application level.
-
-To understand all edge-cases, see Hierarchical injectors. For example:
-
-```ts
-export const appConfig: ApplicationConfig = {
-    providers: [
-      { provide: HeroService },
-    ]
-};
-```
-
-Then, in main.ts:
-
-```ts
-bootstrapApplication(AppComponent, appConfig)
-```
-
-At the application root level, which allows injecting it into other classes in the application. This can be done by adding the providedIn: 'root' field to the @Injectable decorator:
-
-```ts
-@Injectable({
-  providedIn: 'root'
-})
-class HeroService {}
-```
-
-When you provide the service at the root level, Angular creates a single, shared instance of the HeroService and injects it into any class that asks for it. Registering the provider in the @Injectable metadata also allows Angular to optimize an app by removing the service from the compiled application if it isn't used, a process known as tree-shaking.
-
-- Injecting a dependency:- The most common way to inject a dependency is to declare it in a class constructor. When Angular creates a new instance of a component, directive, or pipe class, it determines which services or other dependencies that class needs by looking at the constructor parameter types. For example, if the HeroListComponent needs the HeroService, the constructor can look like this:
-
-```ts
-@Component({ … })
-class HeroListComponent {
-  constructor(private service: HeroService) {}
-}
-```
-
-Another option is to use the inject method:
-
-```ts
-@Component({ … })
-class HeroListComponent {
-  private service = inject(HeroService);
-}
-```
-
-When Angular discovers that a component depends on a service, it first checks if the injector has any existing instances of that service. If a requested service instance doesn't yet exist, the injector creates one using the registered provider, and adds it to the injector before returning the service to Angular.
-
-When all requested services have been resolved and returned, Angular can call the component's constructor with those services as arguments.
 
 ## Directive
 
@@ -540,3 +450,148 @@ The CommonModule exports are re-exported by BrowserModule, which is included aut
 @angular/animations:- Implements a domain-specific language (DSL) for defining web animation sequences for HTML elements as multiple transformations over time.
 
 @angular/service-worker:- Implements a service worker for Angular apps. Adding a service worker to an Angular app is one of the steps for turning it into a Progressive Web App (also known as a PWA).
+
+## Workspace and project file structure
+
+You develop applications in the context of an Angular workspace. A workspace contains the files for one or more projects. A project is the set of files that comprise a standalone application or a shareable library.
+
+- Workspace configuration files: All projects within a workspace share a CLI configuration context. The top level of the workspace contains workspace-wide configuration files, configuration files for the root-level application, and subfolders for the root-level application source and test files.
+
+1. .editorconfig: Configuration for code editors.
+2. .gitignore -Specifies intentionally untracked files that Git should ignore.
+3. README.md- Introductory documentation for the root application.
+4. angular.json- CLI configuration defaults for all projects in the workspace, including configuration options for build, serve, and test tools that the CLI uses, such as Karma, and Protractor.
+5. package.json - Configures npm package dependencies that are available to all projects in the workspace.
+6. package-lock.json - Provides version information for all packages installed into node_modules by the npm client.If you use the yarn client, this file will be yarn.lock instead.
+7. src/ - Source files for the root-level application project.
+8. node_modules/ - Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
+9. tsconfig.json - The base TypeScript configuration for projects in the workspace. All other configuration files inherit from this base file.
+10. karma.conf.js -
+11. browserlistrc -
+12. server.ts -
+
+- Application configuration files: The application-specific configuration files for the root application reside at the workspace root level. For a multi-project workspace, project-specific configuration files are in the project root, under projects/project-name/.
+
+Project-specific TypeScript configuration files inherit from the workspace-wide tsconfig.json.
+
+1. tsconfig.app.json - Application-specific TypeScript configuration, including TypeScript and Angular template compiler options.
+2. tsconfig.spec.json - TypeScript configuration for the application tests.
+
+- Application source files: Files at the top level of src/ support testing and running your application. Subfolders contain the application source and application-specific configuration.
+
+1. app/ - Contains the component files in which your application logic and data are defined. See details below.
+2. assets/ - Contains image and other asset files to be copied as-is when you build your application.
+3. favicon.ico - An icon to use for this application in the bookmark bar.
+4. index.html - The main HTML page that is served when someone visits your site. The CLI automatically adds all JavaScript and CSS files when building your app, so you typically don't need to add any <script> or <link> tags here manually.
+5. main.ts - The main entry point for your application. Compiles the application with the JIT compiler and bootstraps the application's root module (AppModule) to run in the browser. You can also use the AOT compiler without changing any code by appending the --aot flag to the CLI build and serve commands.
+6. styles.css - Lists CSS files that supply styles for a project. The extension reflects the style preprocessor you have configured for the project.
+7. test.ts -
+8. polyfills.ts -
+
+Inside the src folder, the app folder contains your project's logic and data. Angular components, templates, and styles go here.
+
+1. app/app.config.ts - Defines the application config logic that tells Angular how to assemble the application. As you add more providers to the app, they must be declared here.
+2. app/app.component.ts - Defines the logic for the application's root component, named AppComponent. The view associated with this root component becomes the root of the view hierarchy as you add components and services to your application.
+3. app/app.component.html - Defines the HTML template associated with the root AppComponent.
+4. app/app.component.css - Defines the base CSS stylesheet for the root AppComponent.
+5. app/app.component.spec.ts - Defines a unit test for the root AppComponent.
+6. app/app.module.ts - Defines the root module, named AppModule, that tells Angular how to assemble the application. Initially declares only the AppComponent. As you add more components to the app, they must be declared here.
+
+This file is not generated when using --no-standalone option.
+
+## webpack
+
+Angular uses weback to bundle and minify the styles and html.When app changes webpack recomplies the app and refreshes the browser.This feature is called hot Module Replacement
+
+## Angular versions
+
+Key Features and Changes Across Angular Versions
+
+1. Angular 2 (September 2016) - Angular 2 was a complete rewrite of the original AngularJS (version 1.x), making it one of the most transformative versions of Angular. Some key features included:
+    TypeScript Support: Angular 2 was built using TypeScript, bringing in the benefits of strong typing, classes, and interfaces.
+    Component-Based Architecture: Angular 2 introduced components as the fundamental building blocks of applications.
+    Angular CLI: The Angular Command Line Interface (CLI) was introduced to simplify project creation, configuration, and build processes.
+    Improved Dependency Injection: A more flexible and powerful dependency injection system.
+
+2. Angular 4 (March 2017) - Angular 4 brought important performance improvements and new features
+    Smaller Bundle Sizes: Optimized the application size for better performance.
+    Angular Animation Package: Angular 4 made animations easier with a dedicated @angular/animations module.
+    Enhanced Template Syntax: Improved handling of dynamic content and template syntax for better developer experience.
+
+3. Angular 5 (November 2017) - Angular 5 focused on optimizing applications and improving features like
+    Build Optimizer: Introduced a build optimizer to reduce the size of production builds.
+    Angular Universal (SSR): Improved server-side rendering support, enabling better SEO and performance.
+    AOT Compilation: Advanced Ahead-of-Time compilation to improve application startup time.
+
+4. Angular 6 (May 2018) - Angular 6 introduced more tools and improvements to keep the framework modern and flexible
+
+    CLI Updates: New commands like ng add were introduced to simplify adding libraries and tools.
+    Angular Elements: A new feature that allowed Angular components to be packaged as custom elements (Web Components).
+    RxJS 6: Angular 6 upgraded to RxJS 6, simplifying the API for reactive programming.
+
+5. Angular 7 (October 2018) - Angular 7 included several enhancements
+
+    CLI Prompts: Interactive CLI prompts made it easier to work with the Angular CLI.
+    Virtual Scrolling: Optimized large list rendering with virtual scrolling.
+    Angular Material Updates: Further refinements to Angular Material, including better performance and new components.
+
+6. Angular 8 (May 2019) - Angular 8 introduced exciting new capabilities
+
+    Differential Loading: Angular 8 used differential loading to generate separate bundles for modern and legacy browsers, improving load time.
+    Lazy Loading Ivy: Ivy compiler and renderer were introduced in Angular 8, although fully available in Angular 9.
+    Web Workers: Enhanced support for Web Workers for offloading computation to background threads.
+
+7. Angular 9 (February 2020) - Angular 9 marked a significant milestone with the introduction of
+
+    Ivy Rendering Engine: Ivy became the default rendering engine, significantly improving performance and reducing bundle sizes.
+    Type Checking Improvements: Angular 9 enhanced type-checking for templates, reducing runtime errors.
+
+8. Angular 10 (June 2020) - Angular 10 was focused on improving tooling, deprecations, and stability
+
+    TypeScript 3.9 Support: Angular 10 upgraded to TypeScript 3.9.
+    End of Support for IE 9/10: Dropped support for older browsers to focus on modern web technologies.
+    Angular CLI Improvements: Enhancements for faster builds and better performance.
+
+9. Angular 11 (November 2020) - Angular 11 included
+
+    Faster Build Performance: Optimized build speeds and improved error messages in the development environment.
+    Component Test Harness: Introduced a standardized way of testing Angular components.
+    Angular Language Service: Improvements in the Angular Language Service, offering better code completion and inline documentation.
+
+10. Angular 12 (May 2021) - Angular 12 continued the focus on making the framework more modern
+
+    Deprecation of View Engine: Angular 12 fully moved to Ivy, deprecating the old View Engine.
+    Ivy Everywhere: Improved performance with the Ivy rendering engine, and enhanced type-checking for templates.
+    TypeScript 4.2: Support for TypeScript 4.2 introduced new features like improved type inference.
+
+11. Angular 13 (November 2021) - Angular 13 continued optimizing performance
+
+    Ivy Everywhere: Fully embraced Ivy, making it easier to work with modern features and improving overall performance.
+    Angular Material Enhancements: Updated Angular Material components for better accessibility and usability.
+    Build Times: Faster build times, especially in large applications.
+
+12. Angular 14 (March 2022) - Angular 14 introduced new features like
+
+    Standalone Components: Allowed the use of components without requiring an Angular module, making the framework more flexible.
+    Typed Reactive Forms: Improved support for strongly typed forms with better type safety.
+
+13. Angular 15 (November 2022) - Angular 15 improved the framework with
+
+    Simplified Component APIs: Made components even easier to create and manage.
+    Tree-Shakable Routes: Enhanced support for tree-shaking routes to reduce bundle sizes.
+
+14. Angular 16 (2023) - Angular 16 focused on
+
+    Structural Directive API: Introduced a new API for working with structural directives.
+    CLI Enhancements: Further optimizations in the Angular CLI, improving overall developer experience.
+
+15. Angular 17 (2023) - Angular 17 continued to improve the ecosystem with
+
+    Improved Hydration Support: Better support for server-side rendering.
+    Server-Side Rendering Tools: Enhanced tools for easier SSR integration.
+
+16. Angular 18 (2024) - Angular 18 focuses on
+
+    Performance Optimization: Even more performance tweaks to make Angular applications faster and more efficient.
+    Improved Tree-Shaking: Enhancements to tree-shaking for better bundling and load times.
+    Better Tooling for Large-Scale Applications: Introduces features for making large Angular applications more manageable and faster to build.
