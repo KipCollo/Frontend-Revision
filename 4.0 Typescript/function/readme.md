@@ -77,4 +77,38 @@ console.log(add(1, 2)); // 3
 console.log(add('Hello', ' World')); // "Hello World"
 ```
 
-TODO Rest Parameter
+## Parameters
+
+- Optional Parameters
+
+```ts
+function add(nu1: number,num2: number,num3?: number): number{
+  return num3? num1 + num2 + num3 : num1 + num2;
+}
+
+add(2,3)
+add(2,3,4)
+```
+
+- Required Parameters
+
+```ts
+function add(nu1: number,num2: number,num3=10): number{
+  return num1 + num2 + num3;
+}
+
+add(2,3)
+add(2,3,4)
+```
+
+- Rest Parameter
+
+```ts
+function add(nu1: number,num2: number, ...num3: number[]){
+  return num1 + num2 + num3.reduce((a,b) => a +b, 0);
+}
+
+let nums = [1,2,4,5]
+add(2,3, ...nums)
+add(2,3,1,2,4,5)
+```

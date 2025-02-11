@@ -4,7 +4,7 @@ TypeScript is a statically-typed programming language that is a superset of Java
 
 The main benefits of using TypeScript include:
 
-- Type Safety
+- Type Safety:- Keeps your app free from Type Errors.
 - Improved Tooling
 - Improved Maintainability
 - Backwards Compatibility
@@ -63,4 +63,9 @@ To transpile file from js to ts, use the command:
 tsc <filename.ts>
 ```
 
-However it's transpiled under the hood in frameworks.
+However it's transpiled under the hood in frameworks.Typescript is supported by all major libraries and frameworks.
+
+To create a typescript code:-
+
+1. Create a package json file i.e npm init.
+2. Initialize typescript i.e tsc --init.

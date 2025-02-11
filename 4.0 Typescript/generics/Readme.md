@@ -70,3 +70,12 @@ loggingIdentity({ length: 10, value: 3 }); // OK
 ```
 
 In this example, the `Lengthwise` interface defines a `length` property. The `loggingIdentity` function uses a generic type parameter `T` that is constrained by the `Lengthwise` interface, meaning that the type parameter must extend or implement the `Lengthwise` interface. This constraint ensures that the length property is available on the argument passed to the `loggingIdentity` function.
+
+```ts
+function getItems<Type>(items: Type[]): Type[]{
+  return new Array<Type>().concat(items)
+}
+
+getItems<number>([1,2,4,5,6]);
+getItems<string>(["a","b","c"]);
+```
