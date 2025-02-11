@@ -14,6 +14,9 @@ When you run npx create-react-app app-name , the most recent create-react-app np
 
 ```bash
 npx create-react-app <app-name>
+
+npm install -g create-react-app
+create-react-app <app-name>
 ```
 
 Using Vite
