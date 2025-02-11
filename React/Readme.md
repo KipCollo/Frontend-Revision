@@ -5,7 +5,8 @@ React.js is a JavaScript library used for building user interfaces. It allows de
 
 ## Creating React Project
 
-To start with, I highly recommend one approach, and that's using the officially recommended tool called create-react-app .
+- **create-react-app**:-
+
 create-react-app is a command line application, aimed at getting you up to speed with React in no time
 
 You start by using npx , which is an easy way to download and execute Node.js commands without installing them.
@@ -19,7 +20,63 @@ npm install -g create-react-app
 create-react-app <app-name>
 ```
 
-Using Vite
+create-react-app can get quite laggy as your application grows as it uses Webpack under the hood.
+
+- **Using Vite**:- Vite (French word for "quick", pronounced /vit/, like "veet") is a build tool that aims to provide a faster and leaner development experience for modern web projects. It consists of two major parts:
+
+1. A dev server that provides rich feature enhancements over native ES modules, for example extremely fast Hot Module Replacement (HMR).
+2. A build command that bundles your code with Rollup, pre-configured to output highly optimized static assets for production.
+
+Vite has a React plugin,which makes it great replacement of create-react-app for faster experience.
+
+```bash
+npm create vite@latest <app-name>
+```
+
+Manual Installation- In your project, you can install the vite CLI using:
+
+```bash
+npm install -D vite
+
+npx vite
+```
+
+The index.html will be served on <http://localhost:5173.>
+Running vite starts the dev server using the current working directory as root. You can specify an alternative root with vite serve some/sub/dir. Note that Vite will also resolve its config file (i.e. vite.config.js) inside the project root, so you'll need to move it if the root is changed.
+When running vite from the command line, Vite will automatically try to resolve a config file named vite.config.js inside project root (other JS and TS extensions are also supported).
+
+```js
+//vite.config.js
+export default defineConfig{
+  // config options
+  plugins: [react()],
+  server: {
+    port: 3000
+  }
+}
+```
+
+You can also explicitly specify a config file to use with the --config CLI option (resolved relative to cwd):
+
+```bash
+vite --config my-config.js
+```
+
+CONFIG LOADING:- By default, Vite uses esbuild to bundle the config into a temporary file and load it. This may cause issues when importing TypeScript files in a monorepo. If you encounter any issues with this approach, you can specify --configLoader runner to use the module runner instead, which will not create a temporary config and will transform any files on the fly. Note that module runner doesn't support CJS in config files, but external CJS packages should work as usual.
+
+Alternatively, if you're using an environment that supports TypeScript (e.g. node --experimental-strip-types), or if you're only writing plain JavaScript, you can specify --configLoader native to use the environment's native runtime to load the config file. Note that updates to modules imported by the config file are not detected and hence would not auto-restart the Vite server.
+
+In a project where Vite is installed, you can use the vite binary in your npm scripts, or run it directly with npx vite. Here are the default npm scripts in a scaffolded Vite project:
+
+```json
+{
+  "scripts": {
+    "dev": "vite", // start dev server, aliases: `vite dev`, `vite serve`
+    "build": "vite build", // build for production
+    "preview": "vite preview" // locally preview production build
+  }
+} 
+```
 
 ## CLI Tools
 
