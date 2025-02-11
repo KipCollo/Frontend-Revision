@@ -28,8 +28,8 @@ Angular replaces currentCustomer with the string value of the corresponding comp
 
 In the following example, Angular evaluates the title and itemImageUrl properties to display some title text and an image.
 
-```htm
-<p>{{title}}</p>
+```html
+<p>{{ title }}</p>
 <div><img alt="item" src="{{itemImageUrl}}"></div>
 ```
 
@@ -70,14 +70,117 @@ To determine an event target, Angular checks if the name of the target event mat
 ## Two way binding
 
 Two-way binding gives components in your application a way to share data. Use two-way binding to listen for events and update values simultaneously between parent and child components.
-Two-way binding combines property binding with event binding:
+Two-way binding combines the syntax from property binding, [], and the syntax from event binding, ()
 
 1. Property binding - Sets a specific element property.
 2. Event binding- Listens for an element change event.
 
 Angular's two-way binding syntax is a combination of square brackets and parentheses, [()]. The [()] syntax combines the brackets of property binding, [], with the parentheses of event binding, (), as follows.
 
-```html
-src/app/app.component.html
-<app-sizer [(size)]="fontSizePx"></app-sizer>
+```ts
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+@Component({
+  imports: [FormsModule],
+  template: `
+    <main>
+      <h2>Hello {{ firstName }}!</h2>
+      <input type="text" [(ngModel)]="firstName" />
+    </main>
+  `
+})
+export class AppComponent {
+  firstName = 'Collins';
+}
+```
+
+- Two-way binding between components:- Leveraging two-way binding between a parent and child component requires more configuration compared to form elements.
+
+```ts
+// ./app.component.ts
+import { Component } from '@angular/core';
+import { CounterComponent } from './counter/counter.component';
+@Component({
+  selector: 'app-root',
+  imports: [CounterComponent],
+  template: `
+    <main>
+      <h1>Counter: {{ initialCount }}</h1>
+      <app-counter [(count)]="initialCount"></app-counter>
+    </main>
+  `,
+})
+export class AppComponent {
+  initialCount = 18;
+}
+```
+
+```ts
+// './counter/counter.component.ts';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+@Component({
+  selector: 'app-counter',
+  template: `
+    <button (click)="updateCount(-1)">-</button>
+    <span>{{ count }}</span>
+    <button (click)="updateCount(+1)">+</button>
+  `,
+})
+export class CounterComponent {
+  @Input() count: number;
+  @Output() countChange = new EventEmitter<number>();
+  updateCount(amount: number): void {
+    this.count += amount;
+    this.countChange.emit(this.count);
+  }
+}
+```
+
+- Enabling two-way binding between components
+
+If we break down the example above to its core , each two-way binding for components requires the following:
+
+The child component must contain:
+
+1. An @Input() property
+2. A corresponding @Output() event emitter that has the exact same name as the input property plus "Change" at the end. The emitter must also emit the same type as the input property.
+3. A method that emits to the event emitter with the updated value of the @Input().
+
+```ts
+// './counter/counter.component.ts';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+@Component({ 
+   // Omitted for brevity 
+})
+export class CounterComponent {
+  @Input() count: number;
+  @Output() countChange = new EventEmitter<number>();
+  updateCount(amount: number): void {
+    this.count += amount;
+    this.countChange.emit(this.count);
+  }
+}
+```
+
+The parent component must:
+
+1. Wrap the @Input() property name in the two-way binding syntax.
+2. Specify the corresponding property to which the updated value is assigned
+
+```ts
+// ./app.component.ts
+import { Component } from '@angular/core';
+import { CounterComponent } from './counter/counter.component';
+@Component({
+  selector: 'app-root',
+  imports: [CounterComponent],
+  template: `
+    <main>
+      <app-counter [(count)]="initialCount"></app-counter>
+    </main>
+  `,
+})
+export class AppComponent {
+  initialCount = 18;
+}
 ```

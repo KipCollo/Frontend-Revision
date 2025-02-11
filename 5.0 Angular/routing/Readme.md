@@ -2,7 +2,7 @@
 
 Routing in Angular allows the users to create a single-page application with multiple views and navigation between them. Users can switch between these views without losing the application state and properties.
 
-@angular/router Implements the Angular Router service , which enables navigation from one view to the next as users perform application tasks.
+@angular/router Implements the Angular Router service , which enables navigation from one view to the next as users perform application tasks.The Router enables navigation by interpreting a browser URL as an instruction to change the view.
 
 Angular Router is a built-in module in Angular that provides navigation and routing functionality. It allows developers to create single-page applications with multiple views and handle navigation between them.
 
@@ -195,3 +195,83 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
 ];
 ```
+
+The following command uses the Angular CLI to generate a basic Angular application with application routes. The application name in the following example is routing-app.
+
+```bash
+ng new routing-app
+```
+
+**base href** - This guide works with a CLI-generated Angular application. If you are working manually, make sure that you have <base href="/"> in the <head> of your index.html file. This assumes that the app folder is the application root, and uses "/".
+
+- Defining a basic route
+
+There are three fundamental building blocks to creating a route.
+
+Import the routes into app.config.ts and add it to the provideRouter function. The following is the default ApplicationConfig using the CLI.
+
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
+```
+
+## Defining a basic route
+
+There are three fundamental building blocks to creating a route.
+
+Import the routes into app.config.ts and add it to the provideRouter function. The following is the default ApplicationConfig using the CLI.
+
+```ts
+export const appConfig: ApplicationConfig = {
+  providers: [provideRouter(routes)]
+};
+```
+
+The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct.
+
+- Set up a Routes array for your routes.The Angular CLI performs this step automatically.
+
+```ts
+import { Routes } from '@angular/router';
+export const routes: Routes = [];
+```
+
+- Define your routes in your Routes array:- Each route in this array is a JavaScript object that contains two properties. The first property, path, defines the URL path for the route. The second property, component, defines the component Angular should use for the corresponding path.
+
+```ts
+const routes: Routes = [
+  { path: 'first-component', component: FirstComponent },
+  { path: 'second-component', component: SecondComponent },
+];
+```
+
+- Add your routes to your application - Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the routerLink attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include <router-outlet>. This element informs Angular to update the application view with the component for the selected route.
+
+```ts
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+    <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet />
+```
+
+You also need to add the RouterLink, RouterLinkActive, and RouterOutlet to the imports array of AppComponent.
+
+```ts
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'routing-app';
+}
+```
+
+Route order - The order of routes is important because the Router uses a first-match wins strategy when matching routes, so more specific routes should be placed above less specific routes. List routes with a static path first, followed by an empty path route, which matches the default route. The wildcard route comes last because it matches every URL and the Router selects it only if no other routes match first.

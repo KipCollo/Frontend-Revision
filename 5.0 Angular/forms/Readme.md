@@ -11,6 +11,11 @@ Angular provides two approaches to handle user inputs trough forms:
 1. Reactive
 2. Template-driven forms.
 
+Reactive forms and template-driven forms process and manage form data differently. Each approach offers different advantages.
+
+1. Reactive forms - Provide direct, explicit access to the underlying form's object model. Compared to template-driven forms, they are more robust: they're more scalable, reusable, and testable. If forms are a key part of your application, or you're already using reactive patterns for building your application, use reactive forms.
+2. Template-driven forms - Rely on directives in the template to create and manipulate the underlying object model. They are useful for adding a simple form to an app, such as an email list signup form. They're straightforward to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit.
+
 Template-driven forms rely on directives in the template to create and handle forms, while reactive forms use explicit form controls and reactive programming to manage form data and validation.
 
 ## Reactive Forms
@@ -40,7 +45,7 @@ Template-driven forms rely on directives defined in the FormsModule.
 Both reactive and template-driven forms are built on the following base classes.
 
 1. FormControl - Tracks the value and validation status of an individual form control.
-2. FormGroup - Tracks the same values and status for a collection of form controls.
+2. FormGroup - Tracks the same values and status for a collection of form controls.Each form is part of FormGroup.
 3. FormArray -  the same values and status for an array of form controls.
 4. ControlValueAccessor - Creates a bridge between Angular FormControl instances and built-in DOM elements.
 
@@ -48,3 +53,42 @@ Both reactive and template-driven forms are built on the following base classes.
 
 Angular's FormBuilder is a utility class that provides a concise way to define and create form controls and form groups. It simplifies the process of creating and
 managing form controls by providing methods to define form controls with validation rules and default values. It is used by injecting the FormBuilder service into a
+
+- Setup in template-driven forms
+
+In template-driven forms, the form model is implicit, rather than explicit. The directive NgModel creates and manages a FormControl instance for a given form element.
+The following component implements the same input field for a single control, using template-driven forms.
+
+```ts
+import {Component} from '@angular/core';
+@Component({
+  selector: 'app-template-favorite-color',
+  template: `
+    Favorite Color: <input type="text" [(ngModel)]="favoriteColor">
+  `,
+  standalone: false,
+})
+export class FavoriteColorComponent {
+  favoriteColor = '';
+}
+```
+
+- Setup in reactive forms
+
+With reactive forms, you define the form model directly in the component class. The [formControl] directive links the explicitly created FormControl instance to a specific form element in the view, using an internal value accessor.
+The following component implements an input field for a single control, using reactive forms. In this example, the form model is the FormControl instance.
+
+```ts
+import {Component} from '@angular/core';
+import {FormControl} from '@angular/forms';
+@Component({
+  selector: 'app-reactive-favorite-color',
+  template: `
+    Favorite Color: <input type="text" [formControl]="favoriteColorControl">
+  `,
+  standalone: false,
+})
+export class FavoriteColorComponent {
+  favoriteColorControl = new FormControl('');
+}
+```
