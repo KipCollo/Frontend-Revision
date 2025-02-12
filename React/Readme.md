@@ -1,6 +1,6 @@
 # React
 
-React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.
+React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.Built by facebook.
 React.js is a JavaScript library used for building user interfaces. It allows developers to create reusable UI components and efficiently update the UI when the data changes.
 
 ## Creating React Project
@@ -36,7 +36,7 @@ npm create vite@latest <app-name>
 Manual Installation- In your project, you can install the vite CLI using:
 
 ```bash
-npm install -D vite
+npm install -g vite
 
 npx vite
 ```
@@ -107,3 +107,11 @@ Person.talk()
 ## Components
 
 Functional components are stateless and are typically written as plain JavaScript functions. They are simpler and easier to test. Class components, on the other hand,have a state, can use lifecycle methods, and are written as ES6 classes.
+
+```js
+import React from "react"//compiles jsx to plain js
+import ReactDOM from "react-dom"//renders element in the DOM
+
+const element = <h1>Hello World</h1>
+ReactDOM.render(element,document.getElementById("root"));//element is referenced in a div inside index.html
+```
