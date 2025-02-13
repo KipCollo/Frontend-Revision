@@ -20,49 +20,26 @@ interact with therouting system.
 - NgModules
 RouterModule:- Adds directives and providers for in-app navigation among views defined in an application. Use the Angular Router service to declaratively specify application states and manage state transitions.
 
-## Configuration
+Key concepts in Angular Routing:
 
-## Router outlets
+- Routes: Configuration that maps URLs to components.
+- RouterOutlet: A directive that acts as a placeholder for rendering components.
+- RouterLink: A directive used to navigate between routes.
+- Router: The service that manages navigation.
 
-The router-outlet is a directive that's available from the @angular/router package and is used by the router to mark where in a template, a matched component should be inserted.
+The following command uses the Angular CLI to generate a basic Angular application with application routes. The application name in the following example is routing-app.
 
-Thanks to the router outlet, your app will have multiple views/pages and the app template acts like a shell of your application. Any element, you add to the shell will be rendered in each view, only the part marked by the router outlet will be changed between views.
-
-## Router links
-
-In Angular, routerLink when applied to an element in a template, makes that element a link that initiates navigation to a route. Navigation opens one or more routed components in one or more `<router-outlet>` locations on the page.
-
-## Router Events
-
-The Angular Router raises events when it navigates from one route to another route. It raises several events such as `NavigationStart`, `NavigationEnd`, `NavigationCancel`, `NavigationError`, `ResolveStart`, etc. You can listen to these events and find out when the state of the route changes. Some of the useful events are route change start (NavigationStart) and route change end (NavigationEnd).
-
-## Route Guards
-
-Angular route guards are interfaces provided by Angular which, when implemented, allow us to control the accessibility of a route based on conditions provided in class implementation of that interface.
-
-Some types of angular guards are `CanActivate`, `CanActivateChild`, `CanLoad`, `CanDeactivate` and `Resolve`.
-
-## Lazy loading
-
-Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the application load time speed by splitting the application into several bundles. The bundles are loaded as required when the user navigates through the app.
-
-## Angular's ActivatedRoute and how is it used
-
-Angular's ActivatedRoute is a service that provides information about the currently activated route. It contains route parameters, query parameters, data resolved for the route, and other route-related information. It is used by injecting the ActivatedRoute service into a component and accessing its properties and methods to retrieve information about the current route
-
-- Importing your new components:- To use your new components, import them into app.routes.ts at the top of the file, as follows:
-
-```ts
-import {FirstComponent} from './first/first.component';
-import {SecondComponent} from './second/second.component';
+```bash
+ng new routing-app
 ```
 
-Defining a basic route
+**base href** - This guide works with a CLI-generated Angular application. If you are working manually, make sure that you have <base href="/"> in the <head> of your index.html file. This assumes that the app folder is the application root, and uses "/".
+
+## Defining a basic route
+
 There are three fundamental building blocks to creating a route.
 
-Import the routes into app.config.ts and add it to the provideRouter function.
-
-The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct. The following is the default ApplicationConfig using the CLI.
+- Import the routes into app.config.ts and add it to the provideRouter function.- The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct. The following is the default ApplicationConfig using the CLI.
 
 ```ts
 export const appConfig: ApplicationConfig = {
@@ -70,19 +47,14 @@ export const appConfig: ApplicationConfig = {
 };
 ```
 
-Set up a Routes array for your routes
-
-The Angular CLI performs this step automatically.
+- Set up a Routes array for your routes.The Angular CLI performs this step automatically.
 
 ```ts
 import { Routes } from '@angular/router';
-
 export const routes: Routes = [];
 ```
 
-Define your routes in your Routes array.
-
-Each route in this array is a JavaScript object that contains two properties. The first property, path, defines the URL path for the route. The second property, component, defines the component Angular should use for the corresponding path.
+Define your routes in your Routes array:- Each route in this array is a JavaScript object that contains two properties. The first property, path, defines the URL path for the route. The second property, component, defines the component Angular should use for the corresponding path.
 
 ```ts
 const routes: Routes = [
@@ -91,9 +63,7 @@ const routes: Routes = [
 ];
 ```
 
-Add your routes to your application.
-
-Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the routerLink attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include *router-outlet*. This element informs Angular to update the application view with the component for the selected route.
+- Add your routes to your application - Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the routerLink attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include *router-outlet*. This element informs Angular to update the application view with the component for the selected route.
 
 ```html
 <h1>Angular Router App</h1>
@@ -104,7 +74,7 @@ Now that you have defined your routes, add them to your application. First, add 
   </ul>
 </nav>
 <!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<router-outlet />
 ```
 
 You also need to add the RouterLink, RouterLinkActive, and RouterOutlet to the imports array of AppComponent.
@@ -112,8 +82,7 @@ You also need to add the RouterLink, RouterLinkActive, and RouterOutlet to the i
 ```ts
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -122,19 +91,53 @@ export class AppComponent {
 }
 ```
 
-## Route order
+Route order- The order of routes is important because the Router uses a first-match wins strategy when matching routes, so more specific routes should be placed above less specific routes. List routes with a static path first, followed by an empty path route, which matches the default route. The wildcard route comes last because it matches every URL and the Router selects it only if no other routes match first.
 
-The order of routes is important because the Router uses a first-match wins strategy when matching routes, so more specific routes should be placed above less specific routes. List routes with a static path first, followed by an empty path route, which matches the default route. The wildcard route comes last because it matches every URL and the Router selects it only if no other routes match first.
+## Accessing query parameters and fragments
+
+**Link parameters array**:- A link parameters array holds the following ingredients for router navigation:
+
+- The path of the route to the destination component
+- Required and optional route parameters that go into the route URL
+
+Bind the RouterLink directive to such an array like this:
+
+```html
+<a [routerLink]="['/heroes']">Heroes</a>
+```
+
+The following is a two-element array when specifying a route parameter:
+
+```html
+<a [routerLink]="['/hero', hero.id]">  <span class="badge">{{ hero.id }}</span>{{ hero.name }}</a>
+```
+
+*Router Outlet*:- (`router-outlet`)The router-outlet is a directive that's available from the @angular/router package and is used by the router to mark where in a template, a matched component should be inserted.Acts as a placeholder for dynamically loading components based on the current route.When the route changes, Angular dynamically loads the corresponding component into the `router-outlet`.
+Thanks to the router outlet, your app will have multiple views/pages and the app template acts like a shell of your application. Any element, you add to the shell will be rendered in each view, only the part marked by the router outlet will be changed between views.
+
+*Router links*:- In Angular, routerLink when applied to an element in a template, makes that element a link that initiates navigation to a route. Navigation opens one or more routed components in one or more `<router-outlet>` locations on the page.Defined as `routerLink = "/url"`
+
+*Router Events*:- The Angular Router raises events when it navigates from one route to another route. It raises several events such as `NavigationStart`, `NavigationEnd`, `NavigationCancel`, `NavigationError`, `ResolveStart`, etc. You can listen to these events and find out when the state of the route changes. Some of the useful events are route change start (NavigationStart) and route change end (NavigationEnd).
+
+*Route Guards*:- Angular route guards are interfaces provided by Angular which, when implemented, allow us to control the accessibility of a route based on conditions provided in class implementation of that interface.
+
+*ActivatedRoute*:- Angular's ActivatedRoute is a service that provides information about the currently activated route. It contains route parameters, query parameters, data resolved for the route, and other route-related information. It is used by injecting the ActivatedRoute service into a component and accessing its properties and methods to retrieve information about the current route
+
+Some types of angular guards are `CanActivate`, `CanActivateChild`, `CanLoad`, `CanDeactivate` and `Resolve`.
+
+## Lazy loading
+
+Lazy loading is a technique in Angular that allows you to load JavaScript components asynchronously when a specific route is activated. It improves the application load time speed by splitting the application into several bundles. The bundles are loaded as required when the user navigates through the app.
 
 ## Getting route information
 
 Often, as a user navigates your application, you want to pass information from one component to another. For example, consider an application that displays a shopping list of grocery items. Each item in the list has a unique id. To edit an item, users click an Edit button, which opens an EditGroceryItem component. You want that component to retrieve the id for the grocery item so it can display the right information to the user.
 
-Use a route to pass this type of information to your application components. To do so, you use the withComponentInputBinding feature with provideRouter or the bindToComponentInputs option of RouterModule.forRoot.
+Use a route to pass this type of information to your application components. To do so, you use the *withComponentInputBinding* feature with provideRouter or the *bindToComponentInputs* option of *RouterModule.forRoot*.
 
 To get information from a route:
 
-Add the withComponentInputBinding feature to the provideRouter method.
+- Add the withComponentInputBinding feature to the provideRouter method.
 
 ```ts
 provideRouter feature
@@ -143,19 +146,16 @@ providers: [
 ]
 ```
 
-Update the component to have an Input matching the name of the parameter.
+- Add an Input to the component:- Update the component to have an Input matching the name of the parameter.
 
 ```ts
-The component input (excerpt)
 @Input()
 set id(heroId: string) {
   this.hero$ = this.service.getHero(heroId);
 }
 ```
 
-NOTE:
-You can bind all route data with key, value pairs to component inputs: static or resolved route data, path parameters, matrix parameters, and query parameters.
-If you want to use the parent components route info you will need to set the router paramsInheritanceStrategy option: withRouterConfig({paramsInheritanceStrategy: 'always'})
+NOTE: You can bind all route data with key, value pairs to component inputs: static or resolved route data, path parameters, matrix parameters, and query parameters. If you want to use the parent components route info you will need to set the router paramsInheritanceStrategy option: withRouterConfig({paramsInheritanceStrategy: 'always'})
 
 ## Setting up wildcard
 
@@ -196,82 +196,86 @@ const routes: Routes = [
 ];
 ```
 
-The following command uses the Angular CLI to generate a basic Angular application with application routes. The application name in the following example is routing-app.
+## Routing Evolution
 
-```bash
-ng new routing-app
-```
+Angular 2 - Introduced the RouterModule and Routes array for configuration.
 
-**base href** - This guide works with a CLI-generated Angular application. If you are working manually, make sure that you have <base href="/"> in the <head> of your index.html file. This assumes that the app folder is the application root, and uses "/".
+Key features:
 
-- Defining a basic route
-
-There are three fundamental building blocks to creating a route.
-
-Import the routes into app.config.ts and add it to the provideRouter function. The following is the default ApplicationConfig using the CLI.
-
-```ts
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
-};
-```
-
-## Defining a basic route
-
-There are three fundamental building blocks to creating a route.
-
-Import the routes into app.config.ts and add it to the provideRouter function. The following is the default ApplicationConfig using the CLI.
-
-```ts
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
-};
-```
-
-The Angular CLI performs this step for you. However, if you are creating an application manually or working with an existing, non-CLI application, verify that the imports and configuration are correct.
-
-- Set up a Routes array for your routes.The Angular CLI performs this step automatically.
-
-```ts
-import { Routes } from '@angular/router';
-export const routes: Routes = [];
-```
-
-- Define your routes in your Routes array:- Each route in this array is a JavaScript object that contains two properties. The first property, path, defines the URL path for the route. The second property, component, defines the component Angular should use for the corresponding path.
+1. Routes were defined using the Routes array.
+2. Used RouterModule.forRoot() to configure routes.
 
 ```ts
 const routes: Routes = [
-  { path: 'first-component', component: FirstComponent },
-  { path: 'second-component', component: SecondComponent },
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: '**', redirectTo: '' } // Wildcard route for 404
 ];
-```
 
-- Add your routes to your application - Now that you have defined your routes, add them to your application. First, add links to the two components. Assign the anchor tag that you want to add the route to the routerLink attribute. Set the value of the attribute to the component to show when a user clicks on each link. Next, update your component template to include <router-outlet>. This element informs Angular to update the application view with the component for the selected route.
-
-```ts
-<h1>Angular Router App</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
-    <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet />
-```
-
-You also need to add the RouterLink, RouterLinkActive, and RouterOutlet to the imports array of AppComponent.
-
-```ts
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppComponent {
-  title = 'routing-app';
+export class AppRoutingModule {}
+```
+
+Angular 5 - Introduced RouterLinkWithHref for better handling of links.
+Added support for custom URL serialization.
+
+Angular 7 - Introduced pathMatch: 'full' to ensure exact route matching.
+
+```ts
+{ path: '', redirectTo: '/home', pathMatch: 'full' }
+```
+
+Angular 8 - Introduced Dynamic Imports for lazy loading modules.
+
+```ts
+{
+  path: 'admin',
+  loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
 }
 ```
 
-Route order - The order of routes is important because the Router uses a first-match wins strategy when matching routes, so more specific routes should be placed above less specific routes. List routes with a static path first, followed by an empty path route, which matches the default route. The wildcard route comes last because it matches every URL and the Router selects it only if no other routes match first.
+Angular 14 - Introduced Standalone Components, which can be used without modules.
+This allows for simpler route configurations:
+
+```ts
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)]
+});
+```
+
+Modern Angular routing setup:
+
+```ts
+// app.routes.ts
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { 
+    path: 'admin', 
+    loadChildren: () => import('./admin/admin.routes').then(m => m.adminRoutes) 
+  },
+  { path: '**', redirectTo: '' } // Wildcard route for 404
+];
+
+// main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)]
+});
+```

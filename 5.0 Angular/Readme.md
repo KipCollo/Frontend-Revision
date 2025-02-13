@@ -430,32 +430,26 @@ const locationsSubscription = locations.subscribe({
 setTimeout(() => {
   locationsSubscription.unsubscribe();
 }, 10000);
-Last reviewed on Fri Aug 25 2023
 ```
 
 Angular libraries:-
 
-@angular/common:- Implements fundamental Angular framework functionality, including directives and pipes, location services used in routing, HTTP services, localization support, and so on.
+1. @angular/common:- Implements fundamental Angular framework functionality, including directives and pipes, location services used in routing, HTTP services, localization support, and so on.
 The CommonModule exports are re-exported by BrowserModule, which is included automatically in the root AppModule when you create a new app with the CLI new command.
-@angular/common/http:- Implements an HTTP client API for Angular apps that relies on the XMLHttpRequest interface exposed by browsers.
-@angular/common/http/testing:- Supplies a testing module for the Angular HTTP subsystem.
-@angular/common/testing:- Supplies infrastructure for testing functionality supplied by @angular/common.
-@angular/common/upgrade:- Provides tools for upgrading from the $location service provided in AngularJS to Angular's unified location service.
-
-@angular/core:- Implements Angular's core functionality, low-level services, and utilities.
-
-  1. Defines the class infrastructure for components, view hierarchies, change detection, rendering, and event handling.
-  2. Defines the decorators that supply metadata and context for Angular constructs.
-  3. Defines infrastructure for dependency injection (DI), internationalization (i18n), and various testing and debugging facilities.
+    - @angular/common/http:- Implements an HTTP client API for Angular apps that relies on the XMLHttpRequest interface exposed by browsers.
+    - @angular/common/http/testing:- Supplies a testing module for the Angular HTTP subsystem. 
+    - @angular/common/testing:- Supplies infrastructure for testing functionality supplied by @angular/common. 
+    - @angular/common/upgrade:- Provides tools for upgrading from the $location service provided in AngularJS to Angular's unified location service.
+2. @angular/core:- Implements Angular's core functionality, low-level services, and utilities.
+    - Defines the class infrastructure for components, view hierarchies, change detection, rendering, and event handling.
+    - Defines the decorators that supply metadata and context for Angular constructs.
+    - Defines infrastructure for dependency injection (DI), internationalization (i18n), and various testing and debugging facilities.
 @angular/core/global:- Exposes a set of functions in the global namespace which are useful for debugging the current state of your application. These functions are exposed via the global ng "namespace" variable automatically when you import from @angular/core and run your application in development mode. These functions are not exposed when the application runs in a production mode.
 @angular/core/rxjs-interop:- Includes utilities related to using the RxJS library in conjunction with Angular's signal-based reactivity system.
 @angular/core/testing:- Provides infrastructure for testing Angular core functionality.
-
-@angular/forms:- Implements a set of directives and providers to communicate with native DOM elements when building forms to capture user input.
-
-@angular/animations:- Implements a domain-specific language (DSL) for defining web animation sequences for HTML elements as multiple transformations over time.
-
-@angular/service-worker:- Implements a service worker for Angular apps. Adding a service worker to an Angular app is one of the steps for turning it into a Progressive Web App (also known as a PWA).
+3. @angular/forms:- Implements a set of directives and providers to communicate with native DOM elements when building forms to capture user input.
+4. @angular/animations:- Implements a domain-specific language (DSL) for defining web animation sequences for HTML elements as multiple transformations over time.
+5. @angular/service-worker:- Implements a service worker for Angular apps. Adding a service worker to an Angular app is one of the steps for turning it into a Progressive Web App (also known as a PWA).
 
 ## Workspace and project file structure
 
