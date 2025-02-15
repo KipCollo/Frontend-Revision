@@ -279,3 +279,94 @@ bootstrapApplication(AppComponent, {
   providers: [provideRouter(routes)]
 });
 ```
+
+- Router imports:- The Angular Router is an optional service that presents a particular component view for a given URL. It isn't part of the Angular core and thus is in its own library package, @angular/router.
+
+Import what you need from it as you would from any other Angular package.
+
+```ts
+import { provideRouter } from '@angular/router';
+```
+
+- Configuration:- A routed Angular application has one singleton instance of the Router service. When the browser's URL changes, that router looks for a corresponding Route from which it can determine the component to display.
+
+A router has no routes until you configure it.
+
+- Router outlet:- The RouterOutlet is a directive from the router library that is used like a component. It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.
+
+```html
+<router-outlet></router-outlet><!-- Routed components go here -->
+```
+
+Given the preceding configuration, when the browser URL for this application becomes /heroes, the router matches that URL to the route path /heroes and displays the HeroListComponent as a sibling element to the RouterOutlet that you've placed in the host component's template.
+
+- Router links:- To navigate as a result of some user action such as the click of an anchor tag, use RouterLink.
+
+Consider the following template:
+
+```html
+<h1>Angular Router</h1><nav>  <a routerLink="/crisis-center" routerLinkActive="active" ariaCurrentWhenActive="page">Crisis Center</a>  <a routerLink="/heroes" routerLinkActive="active" ariaCurrentWhenActive="page">Heroes</a></nav><router-outlet></router-outlet>
+```
+
+The RouterLink directives on the anchor tags give the router control over those elements. The navigation paths are fixed, so you can assign a string as a one-time binding to the routerLink.
+Had the navigation path been more dynamic, you could have bound to a template expression that returned an array of route link parameters; that is, the link parameters array. The router resolves that array into a complete URL.
+
+- Active router links:- The RouterLinkActive directive toggles CSS classes for active RouterLink bindings based on the current RouterState.
+
+On each anchor tag, you see a property binding to the RouterLinkActive directive that looks like
+
+```html
+routerLinkActive="..."
+```
+
+The template expression to the right of the equal sign, =, contains a space-delimited string of CSS classes that the Router adds when this link is active and removes when the link is inactive. You set the RouterLinkActive directive to a string of classes such as routerLinkActive="active fluffy" or bind it to a component property that returns such a string. For example,
+
+```html
+[routerLinkActive]="someStringProperty"
+
+```
+
+Active route links cascade down through each level of the route tree, so parent and child router links can be active at the same time. To override this behavior, bind to the [routerLinkActiveOptions] input binding with the { exact: true } expression. By using { exact: true }, a given RouterLink is only active if its URL is an exact match to the current URL.
+
+RouterLinkActive also allows you to easily apply the aria-current attribute to the active element, thus providing a more accessible experience for all users. For more information see the Accessibility Best Practices Active links identification section.
+
+- Router state
+
+After the end of each successful navigation lifecycle, the router builds a tree of ActivatedRoute objects that make up the current state of the router. You can access the current RouterState from anywhere in the application using the Router service and the routerState property.
+Each ActivatedRoute in the RouterState provides methods to traverse up and down the route tree to get information from parent, child, and sibling routes.
+
+- Activated route:- The route path and parameters are available through an injected router service called the ActivatedRoute. It has a great deal of useful information including:
+
+1. url - An Observable of the route paths, represented as an array of strings for each part of the route path.
+2. data - An Observable that contains the data object provided for the route. Also contains any resolved values from the resolve guard.
+3. params - An Observable that contains the required and optional parameters specific to the route.
+4. paramMap - An Observable that contains a map of the required and optional parameters specific to the route. The map supports retrieving single and multiple values from the same parameter.
+5. queryParamMap - An Observable that contains a map of the query parameters available to all routes. The map supports retrieving single and multiple values from the query parameter.
+6. queryParams - An Observable that contains the query parameters available to all routes.
+7. fragment - An Observable of the URL fragment available to all routes.
+8. outlet - The name of the RouterOutlet used to render the route. For an unnamed outlet, the outlet name is primary.
+9. routeConfig  - The route configuration used for the route that contains the origin path.
+10. parent - The route's parent ActivatedRoute when this route is a child route.
+11. firstChild - Contains the first ActivatedRoute in the list of this route's child routes.
+12. children - Contains all the child routes activated under the current route.
+
+- Router events:- During each navigation, the Router emits navigation events through the Router.events property. These events are shown in the following table.
+
+1. NavigationStart - Triggered when navigation starts.
+2. RouteConfigLoadStart - Triggered before the Router lazy loads a route configuration.
+3. RouteConfigLoadEnd - Triggered after a route has been lazy loaded.
+4. RoutesRecognized - Triggered when the Router parses the URL and the routes are recognized.
+5. GuardsCheckStart - Triggered when the Router begins the Guards phase of routing.
+6. ChildActivationStart - Triggered when the Router begins activating a route's children.
+7. ActivationStart - Triggered when the Router begins activating a route.
+8. GuardsCheckEnd - Triggered when the Router finishes the Guards phase of routing successfully.
+9. ResolveStart - Triggered when the Router begins the Resolve phase of routing.
+10. ResolveEnd - Triggered when the Router finishes the Resolve phase of routing successfully.
+11. ChildActivationEnd - Triggered when the Router finishes activating a route's children.
+12. ActivationEnd - Triggered when the Router finishes activating a route.
+13. NavigationEnd - Triggered when navigation ends successfully.
+14. NavigationCancel - Triggered when navigation is canceled. This can happen when a Route Guard returns false during navigation, or redirects by returning a UrlTree or RedirectCommand.
+15. NavigationError - Triggered when navigation fails due to an unexpected error.
+16. Scroll - Represents a scrolling event.
+
+When you enable the withDebugTracing feature, Angular logs these events to the console.

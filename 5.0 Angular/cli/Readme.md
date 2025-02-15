@@ -54,7 +54,7 @@ The generated component has its own directory, unless the --flat options is spec
 
 Options
 --flat - Do not create the code in its own directory.
---route=<route> - Specify the parent route. only for generat ing components and routes. Default to the path specified.
+--route=`route` - Specify the parent route. only for generat ing components and routes. Default to the path specified.
 --skip-router-generation - Skip generating the route config for the parent.only usable for routes.
 --default - Specify that the route should be a default route.
 --lazy - Specify that the route is lazy. Default to true.
