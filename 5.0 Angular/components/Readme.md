@@ -144,3 +144,33 @@ export class AppComponent {
 ```html
 <courses></courses>
 ```
+
+## Accepting data with input properties
+
+When you use a component, you commonly want to pass some data to it. A component specifies the data that it accepts by declaring inputs:
+
+- Declaring inputs with the @Input decorator:-You can alternatively declare component inputs by adding the @Input decorator to a property:
+
+```ts
+@Component({...})
+export class CustomSlider {
+  @Input() value = 0;
+}
+```
+
+Binding to an input is the same in both signal-based and decorator-based inputs:
+
+```ts
+<custom-slider [value]="50" />
+```
+
+Customizing decorator-based inputs - The @Input decorator accepts a config object that lets you change the way that input works.
+
+```ts
+@Component({...})
+export class CustomSlider {
+  @Input({required: true}) value = 0;
+}
+```
+
+If you try to use a component without specifying all of its required inputs, Angular reports an error at build-time.
