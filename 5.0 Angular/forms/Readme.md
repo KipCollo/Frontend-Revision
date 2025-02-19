@@ -1,10 +1,8 @@
 # Forms
 
-Angular Forms is a set of features and techniques used to handle and validate user input in forms.
+Angular Forms is a set of features and techniques used to handle and validate user input in forms.Applications use forms to enable users to log in, to update a profile, to enter sensitive information, and to perform many other data-entry tasks.
 
 Angular provides two different approaches to handling user input through forms: reactive and template-driven. Both capture user input events from the view, validate the user input, create a form model and data model to update, and provide a way to track changes.
-
-Forms are used to handle user inputs in many applications. It enables users from entering sensitive information to performing several data entry tasks.
 
 Angular provides two approaches to handle user inputs trough forms:
 

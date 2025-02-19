@@ -1,7 +1,18 @@
 # React
 
-React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.Built by facebook.
-React.js is a JavaScript library used for building user interfaces. It allows developers to create reusable UI components and efficiently update the UI when the data changes.
+React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.Built by facebook.It allows developers to create reusable UI components and efficiently update the UI when the data changes.
+
+## Key Features of React.js
+
+- Virtual DOM:- React uses a Virtual DOM, a lightweight replica of the browser's DOM, which enables fast and efficient rendering.
+- Reusable Components:- Components in React enable developers to create reusable interfaces, which can be easily modified and reused throughout the application.
+- Unidirectional Data flow:- React features a unidirectional data flow, which makes it easier to debug and understand the application’s data flow.
+- JSX Syntax:- React uses JSX - JavaScript syntax extension, which enables the creation of component hierarchies in a readable and streamlined way.
+
+## How React.js Compares to Other Frameworks
+
+- React vs Angular:-Angular is based on MVC pattern while React uses an MVVM pattern.
+- React vs jQuery:- React is full-fledged frontend library,whereas jQuery is a library that focuses on DOM manipulation and event handling.
 
 ## Creating React Project
 

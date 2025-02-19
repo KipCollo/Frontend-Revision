@@ -3,10 +3,11 @@
 Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.Every React app has on root component called *App*.This component rep tye entire application and contains other child components.
 
 Use React snippets to help in development of components
+Components can either be created using the class based approach or a functional approach.
 
 ## Class Components
 
-Components can either be created using the class based approach or a functional approach. These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.
+These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.These components are JavaScript Classes that extends React Component and have their own state and lifecycle methods.
 
 Although the class components are supported in React, it is encouraged to write functional components and make use of hooks in modern React applications.
 
@@ -45,7 +46,7 @@ state={
 };
 
 renderItems(){
-    if(this.state.tags.lenght==0) return <p>No Items</p>
+    if(this.state.tags.length==0) return <p>No Items</p>
     else return <ul>{this.state.tags.map(tag => <li key={tag.id}>{tag}</li>)}</ul>
 }
 render(){
