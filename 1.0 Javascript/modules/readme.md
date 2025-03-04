@@ -158,10 +158,8 @@ From now on, “module” means “ECMAScript module”.
 
 ECMAScript modules comprise three parts:
 
-1. Declarative module syntax: What is a module? How are imports and exports de-
-clared?
-2. The semantics of the syntax: How are the variable bindings handled that are cre-
-ated by imports? How are exported variable bindings handled?
+1. Declarative module syntax: What is a module? How are imports and exports declared?
+2. The semantics of the syntax: How are the variable bindings handled that are created by imports? How are exported variable bindings handled?
 3. A programmatic loader API for configuring module loading.
 Parts 1 and 2 were introduced with ES6. Work on Part 3 is ongoing.
 24.4 Named exports

@@ -1,4 +1,4 @@
-# Datatypes
+# Data Types
 
 Data type refers to the type of data that a JavaScript variable can hold. There are seven primitive data types in JavaScript (Number, BigInt, String, Boolean, Null, Undefined and Symbol). Objects are non-primitives.
 
@@ -32,7 +32,7 @@ let work = undefined//undefined
 let color= null
 ```
 
-Since Javascript is dynamic language,variable data types is determined during runtime.To check th type of data use the keyword **typeof**
+Since Javascript is dynamic language,variable data types is determined during runtime.To check the type of data use the keyword **typeof**
 
 e.g
 

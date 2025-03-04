@@ -30,5 +30,21 @@ const PI=3.14;
 
 1. They are case sensitive
 2. They must begin with letter,underscore or dollar sign
-3. There should be no space btwn words
+3. There should be no space between words
 4. Should be camelCase notations
+
+- JavaScript Dollar Sign $ - Since JavaScript treats a dollar sign as a letter, identifiers containing $ are valid variable names:
+
+```js
+let $ = "Hello World";
+let $$$ = 2;
+let $myMoney = 5;
+```
+
+- JavaScript Underscore (_):- Since JavaScript treats underscore as a letter, identifiers containing *_* are valid variable names:
+
+```js
+let _lastName = "Johnson";
+let _x = 2;
+let _100 = 5;
+```
