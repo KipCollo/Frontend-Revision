@@ -1,12 +1,20 @@
 # AngulAR cli
 
-Angular CLI (Command Line Interface) is a powerful command-line tool that helps in initializing, developing,scaffolding and maintaining Angular applications directly from command shell. It provides various commands to generate components, services, modules, etc. we can install angular latest CLI using the following command
+Angular CLI (Command Line Interface) is a powerful command-line tool that helps in initializing, developing,scaffolding and maintaining Angular applications directly from command shell. It provides various commands to generate components, services, modules, etc.
+
+The Angular CLI is a tool created by Angular team that improves developer experience while building Angular applications.It hides much of complexity of scaffolding and configuring an Angular application while allowing the developer to concentrate on coding.
+
+we can install angular latest CLI using the following command
 
 `sudo npm install -g @angular/cli`
 
+To verify that Angular CLI has been installed correctly,we can run the command:-
+
+`ng version`
+
 ## CLI Commands
 
-- **ng new *project-name* [ options ]** - Creates a new Angular project. By default, the project is created under the current directory.Creates and initializes a new Angular application that is the default project for a new workspace.Alias is 'n'.
+- `ng new <project-name> [ options ]` - The new command is used to create a new Angular application or a new Angular workspace. By default, the project is created under the current directory.Creates and initializes a new Angular application that is the default project for a new workspace.Alias is 'n'.
 
 Provides interactive prompts for optional configuration, such as adding routing support. All prompts can safely be allowed to default.
 
@@ -19,7 +27,7 @@ Options:
 --dry-run - only output the files created and operations performed not actually create the project. Alias: 'd'.
 --verbose - output more information.Alias: 'v'.
 --skip-npm - do not run any npm command once the project is created
---skip-git  do not create a git repos itory for the project.
+--skip-git  do not create a git repository for the project.
 --directory - parent directory to create the new project into.
 
 If you plan to have multiple applications in the workspace, you can create an empty workspace by using the **--no-create-application** option. You can then use **ng generate application** to create an initial application. This allows a workspace name different from the initial app name, and ensures that all applications reside in the /projects subfolder, matching the structure of the configuration file.
@@ -54,7 +62,7 @@ The generated component has its own directory, unless the --flat options is spec
 
 Options
 --flat - Do not create the code in its own directory.
---route=`route` - Specify the parent route. only for generat ing components and routes. Default to the path specified.
+--route=`route` - Specify the parent route. only for generating components and routes. Default to the path specified.
 --skip-router-generation - Skip generating the route config for the parent.only usable for routes.
 --default - Specify that the route should be a default route.
 --lazy - Specify that the route is lazy. Default to true.
@@ -64,7 +72,7 @@ Options:
 --global - Returns the global configuration value instead of the local one (if both are set). This option also makes the command
 work outside of a project directory.
 
-- **ng set path1=valuel, path2=value2, ...pathN=valueN> [options]** - Set a value in the Angular CLI configurat ion. By default, sets the value in the project ' s configuration if ran inside a project, or fails if not inside a project.The pathN arguments is a valid JavaScript path 1ike "users[1].userName". The value will be coerced to the proper type or will throw an error if the type cannot be coerced.
+- **ng set path1=valuel, path2=value2, ...pathN=valueN> [options]** - Set a value in the Angular CLI configuration. By default, sets the value in the project ' s configuration if ran inside a project, or fails if not inside a project.The pathN arguments is a valid JavaScript path 1ike "users[1].userName". The value will be coerced to the proper type or will throw an error if the type cannot be coerced.
 Options
 --global - Sets the global configuration value instead of a local one. This also makes ng set works outside a project.
 
@@ -90,9 +98,7 @@ Options:
 
 The command can be used to build a project of type "application" or "library". When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications.
 
-## Ng serve
-
-ng serve — This command builds, deploy, serves and every time watches your code changes. if find any change in code it builds and serves that code automatically. How do Angular builds? After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
+- **Ng serve**:-This command builds, deploy, serves and every time watches your code changes.If it find any change in code it builds and serves that code automatically.After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
 
 Note that if you get the message:Port 4200 is already in use. Use '--port' to specify a different port.This means that you already have another service running on port 4200. If this is the case you can either 1. shut down the other service or 2. use the --port flag when running ng serve like this:
 
@@ -183,3 +189,5 @@ The Angular CLI command to run end-to-end tests is:
 ```bash
 ng e2e
 ```
+
+`ng help`:- To view all commands you can use this command.

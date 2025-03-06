@@ -1,6 +1,7 @@
 # Angular
 
-Angular is a front-end JavaScript framework i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
+Angular is a front-end JavaScript framework that can run on a broad range of platforms,
+including web, desktop, and mobile i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
 
 Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.Maintained by a dedicated team at Google, Angular provides a broad suite of tools, APIs, and libraries to simplify and streamline your development workflow. Angular gives you a solid platform on which to build fast, reliable applications that scale with both the size of your team and the size of your codebase.
 
@@ -19,6 +20,10 @@ Angular requires Node.js runtime environment.
 Angular supports both server-side rendering (SSR) and static site generation including support for (SSG) along with full DOM hydration.blocks in templates make it templates simple to declaratively divide your into lazy-loadable parts.
 Angular router provides a feature-rich navigation toolkit, route guards, data resolution, lazy-loading, and much more.
 Angular form module provides a standardized system for form participation and validation.
+
+Angular applications are created and developed using a command-line tool made by the
+Angular team called the `Angular CLI`.It automates many development tasks, such as
+scaffolding, testing, and deploying an Angular application, which would take a lot of time to configure manually.
 
 ## Angular Modules
 
@@ -660,4 +665,37 @@ Benefits of PWAs
 ## SPA
 
 SPA is a single page applications.It does not make requests to server for every URL requests.You can use modern framework to create SPAs i.e Angular.
-Anguar has Routing functionality to create SPA.Also it offers SSR(Server Side Rendering) which supports SPA
+Angular has Routing functionality to create SPA.Also it offers SSR(Server Side Rendering) which supports SPA
+
+Angular consists of a collection of JavaScript libraries that we can use for building highly performant and scalable web applications. The architecture of an Angular application is based on a hierarchical representation of components. Components are the fundamental building blocks of an Angular application. They represent and control a particular portion of a web page called the `view`.
+
+An Angular Application has one AppComponent,by convention.Each component in the tree can communicate and interact with its siblings using API defined by each one.
+
+An Angular application can have many features that are called modules.Each module servers a block of single functionality that corresponds to particular application domain or workflow.Angular modules are used to group Angular Components that share similar functionality.
+
+An Angular application has one main module called `AppModule`.Each module can import other modules in an Angular application.
+
+The functionality of a module can be analyzed in presentational and business logic of a feature.Angular Components should only be responsible for handling the presentational logic and delegating business logic tasks to services.The Angular framework provides Angular services to components using built-in `dependency injection (DI)` mechanism.
+
+The Angular DI framework uses special-purpose objects,called injectors,to hide much of complexity of providing dependencies to an Angular application.Components are not required to know any of the actual implementation of Angular service.They only need to ask for it from an injector.
+
+Angular service should follow single responsibility principle,and it should not cross boundaries between different Angular modules.Some can be:-
+
+1. Access data from a backend API using HTTP protocol.
+2. Interact with local storage of browser.
+3. Error logging
+4. Data transformations
+
+The Angular tooling ecosystem is full of extensions and utilities that can help us when developing Angular Applications.There are many extensions available in VSCode Marketplace:-
+
+1. Nx Console - Developed by Nrwl team that provides a GUI over Angular CLI.Contains most Angular CLI commands,and it uses Angular CLI internally to execute each one.
+2. Angular Language Service - Provides various enhancements while editing HTML templates in Angular application:-
+    A. Code autocompletion - Is a feature that helps us find the right property or method to use while while typing.Works by displaying a list of suggestions while we start typing in HTML content.
+    B. Compile error messages - Can be solved partially by the Angular compiler,which is bootstrapped upon building an Angular application for production.It can display compilation error messages before our application reaches compilation process.
+    C. Go-to definition techniques
+3. Angular Snippets - Contains a collection of Angular code snippets for Typescript and HTML.In Typescript,we can use it to create components,modules or services in a blank Typescript file.In an HTML template,we can use the extension to create Angular artifacts e.g the *ngFor directive.
+4. Angular Evergreen- It compares the Angular and Angular CLI versions of an Angular CLI project with latest ones and alerts you about whether you need to update it.Provides an easy-to-user interface for executing the commands:-
+  A. Upgrading Angular dependencies to latest version
+  B. Upgrading Angular dependencies to next version
+  C. Upgrading all npm dependencies.
+5. Material Icon Theme - Contains ton of icons that are based on Material Design.It can understand type of each file in your project and display related icon automatically.
