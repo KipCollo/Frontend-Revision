@@ -1,5 +1,21 @@
 # Component
 
+The application source code resides inside the src\app folder, in the root of our Angular
+CLI project. It contains all the files needed to build and test our Angular application,
+including a component and a module. The component is the main component of the Angular application:
+
+```ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'my-angular';
+}
+```
+
 A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
 
 Components are the main building blocks for Angular applications. Each component consists of:
@@ -8,6 +24,20 @@ Components are the main building blocks for Angular applications. Each component
 2. A TypeScript class that defines behavior
 3. A CSS selector that defines how the component is used in a template
 4. Optionally, CSS styles applied to the template
+
+The following properties characterize an Angular component:
+• `selector`: A unique name that is used to identify and declare the component inside HTML content. It is used as an HTML tag, just like any native HTML element, such as <app-root></app-root>.
+
+NOTE:- The Angular CLI provides the app prefix by default in component selectors.We can use a custom one using the --prefix option when creating a new Angular CLI application from scratch. A custom prefix can be based on the name of an organization or a particular product, and it helps avoid collisions with other libraries or modules.
+
+• `templateUrl`: The path pointing to an HTML file that contains the HTML
+content of the component, which is called the template of the component.
+• `styleUrls`: A list of paths where each one points to a stylesheet file containing the
+CSS styles of the component.
+
+The preceding properties are defined using the `@Component decorator`. It is a function
+that decorates the TypeScript class of the component and recognizes it as an Angular
+component.
 
 ## Creating a Component
 

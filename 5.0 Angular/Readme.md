@@ -662,11 +662,6 @@ Benefits of PWAs
 - PWAs can provide a more integrated experience.
 - PWAs can reach anyone, anywhere, on any device
 
-## SPA
-
-SPA is a single page applications.It does not make requests to server for every URL requests.You can use modern framework to create SPAs i.e Angular.
-Angular has Routing functionality to create SPA.Also it offers SSR(Server Side Rendering) which supports SPA
-
 Angular consists of a collection of JavaScript libraries that we can use for building highly performant and scalable web applications. The architecture of an Angular application is based on a hierarchical representation of components. Components are the fundamental building blocks of an Angular application. They represent and control a particular portion of a web page called the `view`.
 
 An Angular Application has one AppComponent,by convention.Each component in the tree can communicate and interact with its siblings using API defined by each one.

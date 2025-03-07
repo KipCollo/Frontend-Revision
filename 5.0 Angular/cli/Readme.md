@@ -16,6 +16,8 @@ To verify that Angular CLI has been installed correctly,we can run the command:-
 
 - `ng new <project-name> [ options ]` - The new command is used to create a new Angular application or a new Angular workspace. By default, the project is created under the current directory.Creates and initializes a new Angular application that is the default project for a new workspace.Alias is 'n'.
 
+An Angular workspace is an Angular CLI project that contains one or more Angular applications,where some of them can be Angular libraries.
+
 Provides interactive prompts for optional configuration, such as adding routing support. All prompts can safely be allowed to default.
 
 1. The new workspace folder is given the specified project name, and contains configuration files at the top level.
@@ -30,9 +32,19 @@ Options:
 --skip-git  do not create a git repository for the project.
 --directory - parent directory to create the new project into.
 
-If you plan to have multiple applications in the workspace, you can create an empty workspace by using the **--no-create-application** option. You can then use **ng generate application** to create an initial application. This allows a workspace name different from the initial app name, and ensures that all applications reside in the /projects subfolder, matching the structure of the configuration file.
+If you plan to have multiple applications in the workspace, you can create an empty workspace by using the *--no-create-application* option. You can then use *ng generate application* to create an initial application. This allows a workspace name different from the initial app name, and ensures that all applications reside in the /projects subfolder, matching the structure of the configuration file.
 
-- **ng init *project-name* [options ]** - Creates a new Angular project in the current folder.
+The Angular CLI initiates creation process of your Angular application,which consits of the following:-
+
+1. Scaffolding the necessary folder structure of a typical Angular CLI project
+2. Installing the required npm dependencies and Angular packages
+3. Initializing Git in the Angular CLI project
+
+The Angular CLI creates a minimal Angular application by default to provide us with
+a starting point for our Angular project. It contains some ready-made CSS styles and
+HTML content
+
+- `ng init *project-name* [options ]` - Creates a new Angular project in the current folder.
 
 Options
 --dry-run - only output the files created and operations performed not actually create the project Alias: 'd'.
@@ -98,7 +110,7 @@ Options:
 
 The command can be used to build a project of type "application" or "library". When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications.
 
-- **Ng serve**:-This command builds, deploy, serves and every time watches your code changes.If it find any change in code it builds and serves that code automatically.After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
+- `Ng serve`:-This command builds, deploy, serves and every time watches your code changes.If it find any change in code it builds and serves that code automatically.After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
 
 Note that if you get the message:Port 4200 is already in use. Use '--port' to specify a different port.This means that you already have another service running on port 4200. If this is the case you can either 1. shut down the other service or 2. use the --port flag when running ng serve like this:
 

@@ -1,5 +1,31 @@
 # Routing
 
+## SPA
+
+SPA is a single page applications.It does not make requests to server for every URL requests.You can use modern framework to create SPAs i.e Angular.
+
+Angular applications follow SPA architecture,where different views of web page can be activated according to browser URL.Any changes to that URL can be intercepted by Angular router and translated to routes that can activate a particular Angular component
+
+Angular has Routing functionality to create SPA.Also it offers SSR(Server Side Rendering) which supports SPA
+
+Scully is static website generator based on Jamstack architecture.It can cooperate with Angular router to prerender the content of an Angular application according to each route.
+
+## THEORY AND CONTEXT
+
+In old days,client-side applications were highly coupled with underlying server infrastructure.Much machinery was involved when we wanted to visit the page of a website using URL.The browser would send requested URL to the server,and the server should response with matching HTML file for that URL.This was complicated process that would result in delays and varying round-trip times.
+
+Modern web applications eliminate these problems using SPA architecture.A client needs to request a single HTML file only once from the server.Any subsequent changes to URL of the browser are handled internally from client infrastructure.In Angular,the router is responsible for intercepting in-app URL requests and handling them according to a defined route configuration.
+
+Jamstack is a hot,emerging technology that allows us to create fast and secure web applications.Can be used for any application type,i.e e-commerce website,SaaS web application or personal blog.Jamstack architecture is based on the pillars:-
+
+1. Performance - Pages are generated and prerendered during production,eliminating need to wait for content to load.
+2. Scaling - Content is a static files that can be served from anywhere,even from Content Delivery Network(CDN) provider that improves performance of application.
+3. Security - The serverless nature of server side processes and fact that content is already static eliminates potential attacks that target server infrastructures.
+
+Scully is first static website generator for Angular that embraces Jamstack approach.It essentially generates pages of Angular application during build time to be immediately available when requested
+
+## Angular Routing
+
 Routing in Angular allows the users to create a single-page application with multiple views and navigation between them. Users can switch between these views without losing the application state and properties.
 
 @angular/router Implements the Angular Router service , which enables navigation from one view to the next as users perform application tasks.The Router enables navigation by interpreting a browser URL as an instruction to change the view.
@@ -8,10 +34,7 @@ Angular Router is a built-in module in Angular that provides navigation and rout
 
 Defines the Route object that maps a URL path to a component, and the RouterOutlet directive that you use to place a routed view in a template, as well as a complete API for configuring, querying, and controlling the router state.Import RouterModule to use the Router service in your app.
 
-Angular's Router is a module that provides a way to implement navigation and routing in an Angular application. It allows for defining routes, navigating between
-routes, and handling route parameters and query parameters. The Router module is used by importing the RouterModule in the application's module and configuring the
-routes using the RouterModule.forRoot() method. The Router module is then used by injecting the Router service into components and using its methods to navigate and
-interact with therouting system.
+Angular's Router is a module that provides a way to implement navigation and routing in an Angular application. It allows for defining routes, navigating between routes, and handling route parameters and query parameters. The Router module is used by importing the RouterModule in the application's module and configuring the routes using the RouterModule.forRoot() method. The Router module is then used by injecting the Router service into components and using its methods to navigate and interact with the routing system.
 
 1. @angular/router:- Implements the Angular Router service , which enables navigation from one view to the next as users perform application tasks.
 2. @angular/router/testing:- Supplies a testing module for the Angular Router subsystem.
@@ -30,7 +53,46 @@ Key concepts in Angular Routing:
 The following command uses the Angular CLI to generate a basic Angular application with application routes. The application name in the following example is routing-app.
 
 ```bash
-ng new routing-app
+ng new routing-app --routing
+```
+
+When we enable routing in an Angular application, the Angular CLI imports several
+artifacts from the @angular/router npm package in our application:
+
+- It creates the app-routing.module.ts file, which is the main routing module
+of our application:
+
+```ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+const routes: Routes = [];
+@NgModule({
+imports: [RouterModule.forRoot(routes)],
+exports: [RouterModule]
+})
+export class AppRoutingModule { }
+```
+
+- It imports AppRoutingModule into the main module of our application,
+app.module.ts:
+
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+@NgModule({
+  declarations: [
+  AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 **base href** - This guide works with a CLI-generated Angular application. If you are working manually, make sure that you have `base href="/"` in the `head` of your index.html file. This assumes that the app folder is the application root, and uses "/".
