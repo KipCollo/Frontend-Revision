@@ -1,7 +1,6 @@
 # Angular
 
-Angular is a front-end JavaScript framework that can run on a broad range of platforms,
-including web, desktop, and mobile i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
+Angular is a front-end JavaScript framework that can run on a broad range of platforms,including web, desktop, and mobile i.e it enforces a certain style of application development and project structure that developers need to follow to develop apps with Angular. However, it also offers enough flexibility to allow you to structure your project in an understandable and manageable manner.Angular is written in TypeScript.
 
 Angular is a popular open-source JavaScript framework developed by Google for building dynamic web applications.Maintained by a dedicated team at Google, Angular provides a broad suite of tools, APIs, and libraries to simplify and streamline your development workflow. Angular gives you a solid platform on which to build fast, reliable applications that scale with both the size of your team and the size of your codebase.
 
@@ -43,79 +42,20 @@ Use the Angular CLI and the npm package manager to build and publish your librar
 
 Standalone components provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for NgModules. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.
 
-## Difference between a component and a directive in Angular
+`Lazy Loading`:- Lazy loading is a technique in Angular where modules are loaded on-demand when the user navigates to a specific route. It helps in improving the initial loading time of the application by loading only the necessary modules.
 
-A component is a type of directive with a template, while a directive doesn't necessarily have a template and can be used to extend the behavior of existing elements.
+`Angular Ivy`:- Angular Ivy is the next-generation rendering engine and compiler introduced in Angular version 9. It offers improved performance, smaller bundle sizes, and better debugging and build times.
 
-## Lazy Loading
-
-Lazy loading is a technique in Angular where modules are loaded on-demand when the user navigates to a specific route. It helps in improving the initial loading time of the application by loading only the necessary modules.
-
-## Angular Interceptor
-
-Angular Interceptor is a feature that allows you to intercept HTTP requests or responses before they are sent or received. It is used to modify or handle requests globally in an application.
-
-## Angular Material
-
-Angular Material is a UI component library for Angular applications. It provides a set of pre-built and customizable UI components following the Material Design principles.
-
-## Angular Universal
-
-Angular Universal is a server-side rendering (SSR) solution for Angular applications. Itallows the application to be rendered on the server and sent as fully rendered HTML to the client, improving performance and SEO.
-
-## Angular Ivy
-
-Angular Ivy is the next-generation rendering engine and compiler introduced in Angular version 9. It offers improved performance, smaller bundle sizes, and better
-debugging and build times.
-
-## Angular change detection
-
-Angular change detection is a mechanism that detects and propagates changes made to data in an application. It automatically updates the view to reflect the
+`Angular change detection`:- Angular change detection is a mechanism that detects and propagates changes made to data in an application. It automatically updates the view to reflect the
 updated data.
 
-## AOT (Ahead-of-Time) compilation in Angular
+`AOT (Ahead-of-Time) compilation in Angular`:- AOT compilation is a process in Angular where the application's templates and components are compiled during the build phase rather than at runtime. It results in faster rendering and smaller bundle sizes.
 
-AOT compilation is a process in Angular where the application's templates and components are compiled during the build phase rather than at runtime. It results in
-faster rendering and smaller bundle sizes.
+`JIT (Just-in-Time) compilation in Angular`:- JIT compilation is the default compilation mode in Angular, where the templates and components are compiled at runtime in the browser. It offers a faster development cycle but slightly slower performance compared to AOT.
 
-## JIT (Just-in-Time) compilation in Angular
+`tree shaking in Angular`:- Tree shaking is a technique used in Angular (enabled by the underlying TypeScript and webpack) to eliminate unused code from the final bundle during the build process. It helps in reducing the bundle size and improving performance.
 
-JIT compilation is the default compilation mode in Angular, where the templates and components are compiled at runtime in the browser. It offers a faster development
-cycle but slightly slower performance compared to AOT.
-
-## purpose of the "async" pipe in Angular
-
-The "async" pipe in Angular is used to subscribe to an Observable or Promise in the template and automatically update the view with the emitted values.
-
-## decorator in Angular
-
-A decorator in Angular is a function that modifies a class, property, method, or parameter by extending or adding behavior to it. Decorators are used extensively in
-Angular to configure and enhance various parts of the application.
-
-## tree shaking in Angular
-
-Tree shaking is a technique used in Angular (enabled by the underlying TypeScript and webpack) to eliminate unused code from the final bundle during the build
-process. It helps in reducing the bundle size and improving performance.
-
-## Angular schematics
-
-Angular schematics are command-line tools provided by the Angular CLI that automate the process of generating and modifying code in an Angular application.
-They can be used to generate components, modules, services, and more.
-
-## ng-container in Angular
-
-ng-container is a special element in Angular that provides a way to group multiple elements without adding an extra element to the DOM. It is often used in conjunction
-with structural directives.
-
-## ng-content in Angular
-
-ng-content is a placeholder element in Angular that allows the insertion of contentfrom the parent component into a child component. It is used to create reusable
-components with customizable content.
-
-## Angular Renderer
-
-Angular Renderer is an API that provides a way to manipulate the DOM directly in Angular. It is used when there is a need to modify the DOM that is not covered by
-Angular's declarative templates.
+`Angular Renderer`:- Angular Renderer is an API that provides a way to manipulate the DOM directly in Angular. It is used when there is a need to modify the DOM that is not covered by Angular's declarative templates.
 
 Angular's Renderer2 is a class that provides a way to manipulate the DOM directly in Angular. It is used when there is a need to modify the DOM that is not covered by
 Angular's declarative templates. It provides methods for creating, modifying, and removing DOM elements, as well as for manipulating element properties, attributes,

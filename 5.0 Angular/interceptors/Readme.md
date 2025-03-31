@@ -1,5 +1,7 @@
 # Interceptors
 
+`Angular Interceptor`:- Angular Interceptor is a feature that allows you to intercept HTTP requests or responses before they are sent or received. It is used to modify or handle requests globally in an application.
+
 Interceptors are middleware that allows common patterns around retrying,caching,logging and authentication to be abstracted away from individual requests.
 
 They are generally functions which you can run for each request, and have broad capabilities to affect the contents and overall flow of requests and responses. You can install multiple interceptors, which form an interceptor chain where each interceptor processes the request or response before forwarding it to the next interceptor in the chain.

@@ -9,7 +9,7 @@ The different types of data binding in Angular are:
 3. Event binding ((...))
 4. Two-way binding ([(...)])
 
-## Interpolaion
+## Interpolation
 
 Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
 To illustrate how interpolation works, consider an Angular component that contains a currentCustomer variable:

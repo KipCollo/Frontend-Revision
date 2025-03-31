@@ -1,8 +1,6 @@
 # Services
 
-A service in Angular is a reusable singleton object that encapsulates a specific functionality and can be injected into components or other services.
-
-Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
+A service in Angular is a reusable singleton object that encapsulates a specific functionality and can be injected into components or other services.Services let you define code or functionalities that are then accessible and reusable in many other components in the Angular project. It also helps you with the abstraction of logic and data that is hosted independently but can be shared across other components.
 
 Components shouldn't fetch or save data directly and shouldn't knowingly present fake data. They should focus on presenting data and delegate data access to a service. Service is where all the remote API calls exist to retrieve and provide data to components.
 

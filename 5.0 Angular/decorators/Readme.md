@@ -1,5 +1,8 @@
 # Decorators
 
+A decorator in Angular is a function that modifies a class, property, method, or parameter by extending or adding behavior to it. Decorators are used extensively in
+Angular to configure and enhance various parts of the application.
+
 ## Component DECORATOR
 
 Decorator that marks a class as an Angular component and provides configuration metadata that determines how the component should be processed, instantiated, and used at runtime.

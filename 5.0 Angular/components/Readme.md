@@ -1,8 +1,8 @@
 # Component
 
-The application source code resides inside the src\app folder, in the root of our Angular
-CLI project. It contains all the files needed to build and test our Angular application,
-including a component and a module. The component is the main component of the Angular application:
+A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
+
+The application source code resides inside the src\app folder, in the root of our Angular CLI project. It contains all the files needed to build and test our Angular application,including a component and a module. The component is the main component of the Angular application:
 
 ```ts
 import { Component } from '@angular/core';
@@ -15,8 +15,6 @@ export class AppComponent {
   title = 'my-angular';
 }
 ```
-
-A component in Angular is a reusable building block that encapsulates the template,logic, and styling required to render a part of the user interface.
 
 Components are the main building blocks for Angular applications. Each component consists of:
 

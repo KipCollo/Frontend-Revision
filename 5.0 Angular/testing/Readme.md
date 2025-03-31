@@ -150,7 +150,7 @@ As a service consumer, you don't worry about any of this. You don't worry about 
 
 As a service tester, you must at least think about the first level of service dependencies but you can let Angular DI do the service creation and deal with constructor argument order when you use the TestBed testing utility to provide and create services.
 
-- **Angular TestBed**:- TestBed is an Angular utility that creates a testing module for configuring and initializing the environment for unit testing Angular components.
+- `Angular TestBed`:- TestBed is an Angular utility that creates a testing module for configuring and initializing the environment for unit testing Angular components.
 
 ## Testing pipes
 

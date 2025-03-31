@@ -60,7 +60,7 @@ Options
 
 - **ng format** - Formats the code of this project using clang-format.
 
-- **ng generate *type* [options]** - Generate new code inside your project.Alias: 'g'
+- `ng generate *type* [options]` - Generate new code inside your project.Alias: 'g'
 
 Valid types:-
 
@@ -69,6 +69,7 @@ Valid types:-
 3. route <route/to/route-component> - Generates a route. The name should nbe the route used in the RouteConfig.
 4. pipe <path/to/pipe-name>Generates a pipe.
 5. service <path/to/service-name> - Generates a service.
+6. modules
 
 The generated component has its own directory, unless the --flat options is specified.
 
@@ -99,16 +100,19 @@ options
 
 - **ng lint** - Run the codelyzer linter on your project.
 
-- **ng test [options]** - Run unittests, using karma.
+- `ng test [options]` - Run unit tests, using karma.
 Options:
 --watch - Keep running the tests. Default to true.
 --browsers, --colors, --reporters, --port, --log-level - Those arguments are passed directlY to karma.
 
 - **ng version(ng v)** - Outputs the version of angular-cli,node and the operating system.
 
-## Ng build
+- `Ng build`:- The command can be used to build a project of type "application" or "library". When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications.
+The Angular CLI command to build the application for production is:
 
-The command can be used to build a project of type "application" or "library". When used to build a library, a different builder is invoked, and only the ts-config, configuration, and watch options are applied. All other options apply only to building applications.
+```bash
+ng build --prod
+```
 
 - `Ng serve`:-This command builds, deploy, serves and every time watches your code changes.If it find any change in code it builds and serves that code automatically.After coding our Angular apps using TypeScript, we use the Angular CLI command to build the app.
 
@@ -120,19 +124,13 @@ The above command would change the URL you open in your browser to something lik
 
 Another thing to notice is that, on some machines, the domain localhost may not work. You may see a set of numbers such as 127.0.0.1. When you run ng serve it should show you what URL the server is running on, so be sure to read the messages on your machine to find your exact development URL.
 
-## Ng generate
-
-ng generate is used to create the component in angular project. These are the two main ways to generate a new component in Angular: using ng g c <component_name>, and using ng generate component <component_name>. Using either of these two commands, the new component can be generated pretty easily and followed by the suitable component name of your choice.
-
 ## Ng test
 
 ng test is used to runs unit tests in angular project.
 
 `ng test <project> [options]` | `ng t <project> [options]`
 
-## Ng e2e
-
-End-to-end testing (E2E) of Angular applications is performed using the Protractor testing framework, which is created by the Angular team themselves. Protractor can perform end to end tests on Angular applications that are running in a real browser by interacting with it, similar to that of an end-user.
+- `Ng e2e`:- End-to-end testing (E2E) of Angular applications is performed using the Protractor testing framework, which is created by the Angular team themselves. Protractor can perform end to end tests on Angular applications that are running in a real browser by interacting with it, similar to that of an end-user.
 
 ## Ng new
 
@@ -142,64 +140,11 @@ That’s the default usage of the command and creating a new project folder with
 
 The default Angular project, All dependencies installed in node_modules folder , Testing files for each components
 
+`ng help`:- To view all commands you can use this command.
+
 ## Schematics
 
 A schematic is a template-based code generator that supports complex logic. It is a set of instructions for transforming a software project by generating or modifying code.
 
-## Angular CLI command to generate a new component
-
-The Angular CLI command to generate a new component is:
-
-```bash
-ng generate component component-name
-```
-
-## Angular CLI command to generate a new service
-
-The Angular CLI command to generate a new service is:
-
-```bash
-ng generate service service-name
-```
-
-## Angular CLI command to generate a new module
-
-The Angular CLI command to generate a new module is:
-
-```bash
-ng generate module module-name
-```
-
-## Angular CLI command to start the development server?
-
-The Angular CLI command to start the development server is:
-
-```bash
-ng serve
-```
-
-## Angular CLI command to build the application for production
-
-The Angular CLI command to build the application for production is:
-
-```bash
-ng build --prod
-```
-
-## Angular CLI command to run unit tests
-
-The Angular CLI command to run unit tests is:
-
-```bash
-ng test
-```
-
-## Angular CLI command to run end-to-end tests
-
-The Angular CLI command to run end-to-end tests is:
-
-```bash
-ng e2e
-```
-
-`ng help`:- To view all commands you can use this command.
+Angular schematics are command-line tools provided by the Angular CLI that automate the process of generating and modifying code in an Angular application.
+They can be used to generate components, modules, services, and more.
