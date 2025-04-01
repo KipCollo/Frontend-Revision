@@ -47,10 +47,16 @@ export class HeroService {
 }
 ```
 
+`@Injectable`:- is used to annotate a service class in Angular. It allows the class to be injected with dependencies and enables the Angular dependency
+injection system to create and provide instances of the service.
+
 ## ngZone in Angular
 
 ngZone is a service in Angular that provides a way to execute code outside or inside the Angular zone. It helps in managing change detection and optimizing
 performance.
+Angular's ngZone service provides a way to execute code within or outside the Angular zone. The Angular zone is an execution context that tracks asynchronous
+operations and triggers change detection when needed. The ngZone service is used to manage change detection and optimize the performance of the application. It is
+used by injecting the ngZone service into a component or service and using its run() method to execute code within the Angular zone.
 
 The "ngZone" service provides a way to execute code within or outside the Angular zone. It is used to handle change detection and trigger Angular's rendering cycle.
 

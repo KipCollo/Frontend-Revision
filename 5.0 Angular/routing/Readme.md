@@ -354,7 +354,7 @@ import { provideRouter } from '@angular/router';
 
 A router has no routes until you configure it.
 
-- Router outlet:- The RouterOutlet is a directive from the router library that is used like a component. It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.
+- Router outlet:- The RouterOutlet is a directive from the router library that is used like a component. It acts as a placeholder that marks the spot in the template where the router should display the components for that outlet.The "RouterOutlet" directive is used in Angular to define the location where the router should render the components associated with different routes. It acts as a placeholder for dynamically loaded components.
 
 ```html
 <router-outlet></router-outlet><!-- Routed components go here -->
@@ -459,3 +459,46 @@ Generating guard using cli:-
 ```bash
 ng g g <guard-name>
 ```
+
+The `"resolve" property` in Angular route configuration is used to specify a set of data to be resolved before activating a route. It allows for fetching data from a server or
+performing other tasks asynchronously before the route is activated.
+
+`CanActivate" guard`:- The "CanActivate" guard is used in Angular to control access to a route based on certain conditions. It allows for preventing navigation to a route if specific criteria are not met, such as user authentication.
+Angular's CanActivate guard is an interface that defines a guard that controls access to a route based on certain conditions. It allows for preventing navigation to a route if
+specific criteria are not met, such as user authentication or authorization. It is used by implementing the CanActivate interface in a guard class and providing the guard in
+the route configuration.
+
+`CanDeactivate" guard`:- The "CanDeactivate" guard is used in Angular to control whether a user can leave a route or component. It allows for prompting the user with a confirmation message or performing other actions before leaving the current route.
+Angular's CanDeactivate guard is an interface that defines a guard that controls whether a user can leave a route or component. It allows for prompting the user with
+a confirmation message or performing other actions before leaving the current route.
+It is used by implementing the CanDeactivate interface in a guard class and providing the guard in the route configuration.
+
+`CanLoad" guard`:- The "CanLoad" guard is used in Angular to control whether a module can be loaded lazily. It allows for preventing the loading of a module based on certain conditions, such as user permissions.
+Angular's CanLoad guard is an interface that defines a guard that controls whether a module can be loaded lazily. It allows for preventing the loading of a module based on
+certain conditions, such as user permissions or feature flags. It is used by implementing the CanLoad interface in a guard class and providing the guard in the route configuration.
+
+Angular's ActivatedRoute is a service that provides information about the currently activated route. It contains route parameters, query parameters, data resolved for the
+route, and other route-related information. It is used by injecting the ActivatedRoute service into a component and accessing its properties and methods to retrieve
+information about the current route.
+
+Angular's ActivatedRouteSnapshot is an interface that represents the state of a route at a particular moment in time. It contains information about the route's parameters,
+data, URL segments, and more. It is used to access the route snapshot in Angular's route guards or resolver services.
+
+Angular's ActivatedRouteData is an interface that represents additional data associated with a route. It can be used to store custom data related to a route, such as breadcrumbs, page titles, or any other information that needs to be accessed during route navigation or rendering.
+
+Angular's RouterLink directive is used to create links to navigate between different routes in an Angular application. It automatically updates the URL and activates the
+corresponding route when the link is clicked. It is used by adding the RouterLink directive to an anchor tag or any other clickable element and providing it with the
+route path or a link parameters array.
+
+Angular's ActivatedRouteLink directive is used to create links that navigate to a specific route based on the current route's context. It allows for relative navigation
+and generating links dynamically based on the current route's parameters and data.It is used by adding the ActivatedRouteLink directive to an anchor tag or any other clickable element and providing it with the desired route parameters.
+
+Angular's RouterOutlet directive is used to define the location where the router should render the components associated with different routes. It acts as a placeholder for
+dynamically loaded components based on the current route. It is used by adding the RouterOutlet directive to a container element in the template where the routed components should be rendered.
+
+Angular's RouterStateSnapshot is an interface that represents the state of the router at a particular moment in time. It contains information about the current URL, the
+activated route hierarchy, and the state of the route guards. It is used to access the current router state in Angular's route guards or resolver services.
+
+Angular's RouteResolver is an interface that defines a resolver service that retrieves data before activating a route. It allows for fetching data from a server or performing
+other tasks asynchronously before the route is activated. It is used by implementing the resolve() method in a resolver service class and providing the resolver in the route
+configuration.

@@ -165,3 +165,7 @@ bootstrapApplication(AppComponent, {providers: [
 ```
 
 DI-based interceptors run in the order that their providers are registered. In an app with an extensive and hierarchical DI configuration, this order can be very hard to predict.
+
+`Angular's HttpClientInterceptor` is an interface that allows for intercepting and modifying HTTP requests and responses made with the HttpClient module.
+Interceptors can be used to add headers, handle authentication, modify the request or response payload, or perform other actions. Interceptors are used by implementing
+the HttpInterceptor interface and registering the interceptor in the application's module or using the providedIn property to automatically provide the interceptor.

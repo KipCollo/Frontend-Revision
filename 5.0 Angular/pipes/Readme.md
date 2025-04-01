@@ -77,3 +77,5 @@ export class PipeComponent {
 <p>{{today|date:"medium"}}</p>
 <div>{{gender | i18nSelect: inviteMap}} </div>
 ```
+
+The "async" pipe in Angular is used to subscribe to an asynchronous data source, such as an Observable or Promise, and automatically update the view with the emitted values.

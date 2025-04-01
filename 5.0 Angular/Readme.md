@@ -46,6 +46,14 @@ Standalone components provide a simplified way to build Angular applications. St
 
 `Angular Ivy`:- Angular Ivy is the next-generation rendering engine and compiler introduced in Angular version 9. It offers improved performance, smaller bundle sizes, and better debugging and build times.
 
+`Angular Ivy Renderer`:- Angular Ivy Renderer is the rendering engine introduced with Angular Ivy. It is responsible for transforming the component template into executable code,optimizing rendering performance, and enabling features like incremental DOM updates.
+
+`Angular Ivy's differential loading` is a feature that generates different bundles for modern browsers and older browsers. Modern browsers receive a smaller bundle with
+ES2015+ syntax, while older browsers receive a larger bundle transpiled to ES5 syntax.
+
+Angular Ivy's improved tree shaking is a feature that allows for better elimination of unused code during the build process. It analyzes the application's dependencies
+more accurately, resulting in smaller bundle sizes and improved performance.
+
 `Angular change detection`:- Angular change detection is a mechanism that detects and propagates changes made to data in an application. It automatically updates the view to reflect the
 updated data.
 
@@ -61,112 +69,57 @@ Angular's Renderer2 is a class that provides a way to manipulate the DOM directl
 Angular's declarative templates. It provides methods for creating, modifying, and removing DOM elements, as well as for manipulating element properties, attributes,
 and styles. It is used by injecting the Renderer2 service into a component or directive and using its methods to perform DOM manipulations.
 
-## ViewEncapsulation in Angular
+`ViewEncapsulation in Angular`:- ViewEncapsulation is a feature in Angular that encapsulates the styles of a component to prevent them from leaking and affecting other components. It provides different encapsulation modes like Emulated, Native, and None.
 
-ViewEncapsulation is a feature in Angular that encapsulates the styles of a component to prevent them from leaking and affecting other components. It provides
-different encapsulation modes like Emulated, Native, and None.
-
-## zone.js in Angular
-
-zone.js is a library used by Angular to provide a zone-based execution context. It helps in tracking asynchronous operations and triggering change detection when needed.
-
-## Angular's ngZone service and how is it used
+`zone.js in Angular`:- zone.js is a library used by Angular to provide a zone-based execution context. It helps in tracking asynchronous operations and triggering change detection when needed.
 
 Angular's ngZone service provides a way to execute code within or outside the Angular zone. The Angular zone is an execution context that tracks asynchronous
 operations and triggers change detection when needed. The ngZone service is used to manage change detection and optimize the performance of the application. It is
 used by injecting the ngZone service into a component or service and using its run() method to execute code within the Angular zone.
 
-## @ViewChild and @ContentChild used for
+The "ngZone.runOutsideAngular()" method is used to run a specific code block outside the Angular zone. It helps to prevent unnecessary change detection cycles and
+improves the performance of the code executed within the block.
 
-Decorators like @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or
-element, while @ContentChild is used to access projected content within a component.
+`@ViewChild and @ContentChild`:- @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or element, while @ContentChild is used to access projected content within a component.
+Angular's ViewChild decorator is used to access child elements or components in a parent component. It allows the parent component to obtain a reference to a child
+component or DOM element and interact with it. It is used by adding the ViewChild decorator to a property in the parent component and specifying the selector of the
+child component or element to be referenced.
 
-## "HostListener" decorator in Angular
+Angular's ContentChild decorator is used to access projected content within a component. It allows the component to obtain a reference to a projected component,
+directive, or template variable and interact with it. It is used by adding theContentChild decorator to a property in the component and specifying the selector of
+the projected content to be referenced.
 
-The "HostListener" decorator is used to add event listeners to the host element of a component in Angular. It allows the component to listen to and react to events raised on the host element.
+`HostListener`:- The "HostListener" decorator is used to add event listeners to the host element of a component in Angular. It allows the component to listen to and react to events raised on the host element.
 
-## "HostBinding" decorator in Angular
+`HostBinding`:- The "HostBinding" decorator is used to bind a property of a component to a property of its host element. It allows the component to modify or reflect the state of the host element.
 
-The "HostBinding" decorator is used to bind a property of a component to a property of its host element. It allows the component to modify or reflect the state of the host element.
+`NoopAnimationsModule`:- The "NoopAnimationsModule" module is a module provided by Angular that disables animations in Angular Material components. It is useful in scenarios where animations are not desired or need to be turned off for testing purposes.
 
-## "@Injectable" decorator in Angular
+`@Host decorator`:- The "@Host" decorator is used in Angular to restrict the dependency resolution to only the host component, excluding any parent components. It ensures that the dependency is obtained from the immediate host component.
 
-The "@Injectable" decorator is used to annotate a service class in Angular. It allows the class to be injected with dependencies and enables the Angular dependency
-injection system to create and provide instances of the service.
+The `"ErrorHandler" interface` in Angular is used to define a custom error handler for handling errors that occur in the application. It allows for centralizing error handling
+logic and providing a consistent error-handling strategy.
+Angular's ErrorHandler interface is used to define a custom error handler for handling errors that occur in the application. It allows for centralizing error handling logic and
+providing a consistent error-handling strategy. It is used by implementing the handleError() method in an error handler class and providing the error handler in the application's dependency injection system.
 
-The "async" pipe in Angular is used to subscribe to an asynchronous data source, such as an Observable or Promise, and automatically update the view with the emitted values.
+The `ContentChild decorator` in Angular is used to obtain a reference to a child component, directive, or template variable projected into the component's view. It
+allows the component to interact with and access the properties and methods of the projected content.
 
-## Angular Material CDK
+The `ContentChildren decorator` in Angular is used to obtain a reference to multiple instances of a child component, directive, or template variable projected into the
+component's view. It allows the component to interact with and access multiple instances of the projected content.
 
-Angular Material CDK (Component Dev Kit) isa set of tools and utilities provided by Angular Material that helps in building custom, reusable UI components. It provides
-features like drag and drop, virtual scrolling, overlays, and more.
+Angular's `EventEmitter` is a class that provides a way to emit custom events from a component. It allows the component to define custom events and emit them when
+certain actions or conditions occur. It is used by declaring an EventEmitter property in the component and emitting events using the emit() method.
 
-## Angular Ivy Renderer
-
-Angular Ivy Renderer is the rendering engine introduced with Angular Ivy. It is responsible for transforming the component template into executable code,
-optimizing rendering performance, and enabling features like incremental DOM updates.
-
-## Angular Ivy's differential loading
-
-Angular Ivy's differential loading is a feature that generates different bundles for modern browsers and older browsers. Modern browsers receive a smaller bundle with
-ES2015+ syntax, while older browsers receive a larger bundle transpiled to ES5 syntax.
-
-## "NoopAnimationsModule" module in Angular
-
-The "NoopAnimationsModule" module is a module provided by Angular that disables animations in Angular Material components. It is useful in scenarios where animations
-are not desired or need to be turned off for testing purposes.
-
-## "@Host" decorator in Angular
-
-The "@Host" decorator is used in Angular to restrict the dependency resolution to only the host component, excluding any parent components. It ensures that the
-dependency is obtained from the immediate host component.
-
-## "preserveWhitespaces" configuration in Angular templates
-
-The "preserveWhitespaces" configuration in Angular templates is used to control thehandling of whitespace characters in the template. When set to "true", it preserves
-all whitespace characters, including line breaks and spaces. When set to "false" or not specified, it removes unnecessary whitespace characters to minimize the size of the rendered HTML.
-
-## Angular Material Theming
-
-Angular Material Theming is a feature that allows customization of the visual appearance and style of Angular Material components. It provides a way to define
-custom color palettes, typography, and other style attributes to create a unique look and feel for the application.
-
-## "resolve" property in Angular route configuration
-
-The "resolve" property in Angular route configuration is used to specify a set of data to be resolved before activating a route. It allows for fetching data from a server or performing other tasks asynchronously before the route is activated.
-
-## "CanActivate" guard in Angular
-
-The "CanActivate" guard is used in Angular to control access to a route based on certain conditions. It allows for preventing navigation to a route if specific criteria are not met, such as user authentication.
-
-## "CanDeactivate" guard in Angular
-
-The "CanDeactivate" guard is used in Angular to control whether a user can leave a route or component. It allows for prompting the user with a confirmation message or
-performing other actions before leaving the current route.
-
-## "CanLoad" guard in Angular
-
-The "CanLoad" guard is used in Angular to control whether a module can be loaded lazily. It allows for preventing the loading of a module based on certain conditions,
-such as user permissions.
-
-Angular's HttpClient is a built-in module that provides an API for making HTTP requests to a server. It supports various HTTP methods such as GET, POST, PUT, DELETE, and provides features like handling request headers, request/response interception, and error handling. It is used by injecting the HttpClient service into a component or service and invoking its methods to perform HTTP operations.
-
-## Angular's ngUpgrade module and when is it used
-
-Angular's ngUpgrade module is used to facilitate the gradual migration of an AngularJS (Angular 1.x) application to Angular. It allows for running AngularJS and
+`Angular's ngUpgrade module` is used to facilitate the gradual migration of an AngularJS (Angular 1.x) application to Angular. It allows for running AngularJS and
 Angular components side by side in the same application and provides utilities for interoperability between the two frameworks. The ngUpgrade module is used when
 transitioning from AngularJS to Angular in an existing application. It allows for a step-by-step migration approach without the need to rewrite the entire application at once.
 
-## Angular's HttpClientInterceptor and how is it used
-
-Angular's HttpClientInterceptor is an interface that allows for intercepting and modifying HTTP requests and responses made with the HttpClient module.
-Interceptors can be used to add headers, handle authentication, modify the request or response payload, or perform other actions. Interceptors are used by implementing
-the HttpInterceptor interface and registering the interceptor in the application's module or using the providedIn property to automatically provide the interceptor.
-
-## Angular's ElementRef and how is it used
-
-Angular's ElementRef is a class that represents a reference to a DOM element. It provides access to the underlying DOM element and allows for direct manipulation of
+`Angular's ElementRef` is a class that represents a reference to a DOM element. It provides access to the underlying DOM element and allows for direct manipulation of
 its properties and methods. It is used by injecting the ElementRef into a component or directive and accessing its nativeElement property to interact with the DOM element.
+
+The `"StrictNullChecks" compiler` option in TypeScript enforces stricter null and undefined checks during type checking. It helps in catching potential null or
+undefined errors at compile-time and promotes safer coding practices.
 
 ## Observables
 
@@ -382,8 +335,8 @@ Angular libraries:-
 1. @angular/common:- Implements fundamental Angular framework functionality, including directives and pipes, location services used in routing, HTTP services, localization support, and so on.
 The CommonModule exports are re-exported by BrowserModule, which is included automatically in the root AppModule when you create a new app with the CLI new command.
     - @angular/common/http:- Implements an HTTP client API for Angular apps that relies on the XMLHttpRequest interface exposed by browsers.
-    - @angular/common/http/testing:- Supplies a testing module for the Angular HTTP subsystem. 
-    - @angular/common/testing:- Supplies infrastructure for testing functionality supplied by @angular/common. 
+    - @angular/common/http/testing:- Supplies a testing module for the Angular HTTP subsystem.
+    - @angular/common/testing:- Supplies infrastructure for testing functionality supplied by @angular/common.
     - @angular/common/upgrade:- Provides tools for upgrading from the $location service provided in AngularJS to Angular's unified location service.
 2. @angular/core:- Implements Angular's core functionality, low-level services, and utilities.
     - Defines the class infrastructure for components, view hierarchies, change detection, rendering, and event handling.
@@ -400,7 +353,7 @@ The CommonModule exports are re-exported by BrowserModule, which is included aut
 
 You develop applications in the context of an Angular workspace. A workspace contains the files for one or more projects. A project is the set of files that comprise a standalone application or a shareable library.
 
-- Workspace configuration files: All projects within a workspace share a CLI configuration context. The top level of the workspace contains workspace-wide configuration files, configuration files for the root-level application, and subfolders for the root-level application source and test files.
+- `Workspace configuration files`: All projects within a workspace share a CLI configuration context. The top level of the workspace contains workspace-wide configuration files, configuration files for the root-level application, and subfolders for the root-level application source and test files.
 
 1. .editorconfig: Configuration for code editors.
 2. .gitignore -Specifies intentionally untracked files that Git should ignore.
@@ -411,18 +364,18 @@ You develop applications in the context of an Angular workspace. A workspace con
 7. src/ - Source files for the root-level application project.
 8. node_modules/ - Provides npm packages to the entire workspace. Workspace-wide node_modules dependencies are visible to all projects.
 9. tsconfig.json - The base TypeScript configuration for projects in the workspace. All other configuration files inherit from this base file.
-10. karma.conf.js -
+10. karma.conf.js - Test runner use by cli to run tests.
 11. browserlistrc -
 12. server.ts -
 
-- Application configuration files: The application-specific configuration files for the root application reside at the workspace root level. For a multi-project workspace, project-specific configuration files are in the project root, under projects/project-name/.
+- `Application configuration files`: The application-specific configuration files for the root application reside at the workspace root level. For a multi-project workspace, project-specific configuration files are in the project root, under projects/project-name/.
 
 Project-specific TypeScript configuration files inherit from the workspace-wide tsconfig.json.
 
 1. tsconfig.app.json - Application-specific TypeScript configuration, including TypeScript and Angular template compiler options.
 2. tsconfig.spec.json - TypeScript configuration for the application tests.
 
-- Application source files: Files at the top level of src/ support testing and running your application. Subfolders contain the application source and application-specific configuration.
+- `Application source files`: Files at the top level of src/ support testing and running your application. Subfolders contain the application source and application-specific configuration.
 
 1. app/ - Contains the component files in which your application logic and data are defined. See details below.
 2. assets/ - Contains image and other asset files to be copied as-is when you build your application.
@@ -446,7 +399,7 @@ This file is not generated when using --no-standalone option.
 
 ## webpack
 
-Angular uses weback to bundle and minify the styles and html.When app changes webpack recomplies the app and refreshes the browser.This feature is called hot Module Replacement
+Angular uses webpack to bundle and minify the styles and html.When app changes webpack recompiles the app and refreshes the browser.This feature is called hot Module Replacement
 
 ## Angular versions
 

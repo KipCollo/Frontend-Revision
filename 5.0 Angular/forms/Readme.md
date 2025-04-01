@@ -22,7 +22,12 @@ Provide direct, explicit access to the underlying form's object model. Compared 
 
 Reactive Forms in angular are those which used to handle the inputs coming from the user. We can define controls by using classes such as FormGroup and FormControl.
 
+Angular's reactive forms approach is a way of building forms using reactive programming principles. It involves creating form controls and form groups programmatically in the component using the FormBuilder service. It provides more flexibility and control over form validation and handling complex form scenarios.
+
 ## Template Driven Forms
+
+Angular's template-driven forms approach is a way of building forms using template syntax and directives. It allows the form controls and validation rules to be defined
+directly in the template, with Angular automatically managing the form state and validation. It is suitable for simpler forms with less complex validation requirements.
 
 Rely on directives in the template to create and manipulate the underlying object model. They are useful for adding a simple form to an app, such as an email list signup form. They're straightforward to add to an app, but they don't scale as well as reactive forms. If you have very basic form requirements and logic that can be managed solely in the template, template-driven forms could be a good fit.
 
@@ -47,10 +52,14 @@ Both reactive and template-driven forms are built on the following base classes.
 3. FormArray -  the same values and status for an array of form controls.
 4. ControlValueAccessor - Creates a bridge between Angular FormControl instances and built-in DOM elements.
 
-## Angular's FormBuilder and how is it used
+Angular's `FormBuilder` is a utility class that provides a concise way to define and create form controls and form groups. It simplifies the process of creating and
+managing form controls by providing methods to define form controls with validation rules and default values. It is used by injecting the FormBuilder service into a component and invoking its methods to create form controls and groups.
 
-Angular's FormBuilder is a utility class that provides a concise way to define and create form controls and form groups. It simplifies the process of creating and
-managing form controls by providing methods to define form controls with validation rules and default values. It is used by injecting the FormBuilder service into a
+Angular's `FormGroup class` is used to represent a group of form controls. It is used to create a container for multiple form controls that are related to each other. Angular's
+`FormControl class` is used to represent a single form control. It is used to define and manage the value, validation rules, and state of an individual form control.
+
+Angular's `Validators class` is a utility class that provides a set of pre-built validators that can be used to validate form controls in Angular forms. It includes validators for required fields, minimum and maximum values, email addresses, and more.Validators are typically used when defining form controls in reactive forms or
+template-driven forms.
 
 - Setup in template-driven forms
 
@@ -90,3 +99,6 @@ export class FavoriteColorComponent {
   favoriteColorControl = new FormControl('');
 }
 ```
+
+The `"ngOnInit" method` is a lifecycle hook in Angular that is used in forms to initialize and set up the form controls and validators. It is called after the component has been
+initialized and is a good place to set the initial values of the form or set up any form-related logic.

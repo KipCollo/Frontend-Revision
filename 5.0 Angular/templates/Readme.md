@@ -147,3 +147,8 @@ If you declare the variable on a Angular component, the variable refers to the c
 <!-- The `startDate` variable is assigned the instance of `MyDatepicker`. -->
 <my-datepicker #startDate />
 ```
+
+## "preserveWhitespaces" configuration in Angular templates
+
+The "preserveWhitespaces" configuration in Angular templates is used to control the handling of whitespace characters in the template. When set to "true", it preserves
+all whitespace characters, including line breaks and spaces. When set to "false" or not specified, it removes unnecessary whitespace characters to minimize the size of the rendered HTML.
