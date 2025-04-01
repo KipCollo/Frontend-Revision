@@ -177,19 +177,21 @@ export class AppComponent {
 
 When you use a component, you commonly want to pass some data to it. A component specifies the data that it accepts by declaring inputs:
 
-- Declaring inputs with the @Input decorator:-You can alternatively declare component inputs by adding the @Input decorator to a property:
+`@Input()` is a decorator in Angular that allows data to be passed from a parent component to a child component.
+Declaring inputs with the @Input decorator:-You can alternatively declare component inputs by adding the @Input decorator to a property:
 
 ```ts
 @Component({...})
 export class CustomSlider {
-  @Input() value = 0;
+  @Input() name: string = '';// @Input() name: string makes name available for the parent component to pass data into the child.
 }
 ```
 
+Pass Data from Parent to Child.
 Binding to an input is the same in both signal-based and decorator-based inputs:
 
-```ts
-<custom-slider [value]="50" />
+```html
+<app-child [name]="'John Doe'"></app-child>
 ```
 
 Customizing decorator-based inputs - The @Input decorator accepts a config object that lets you change the way that input works.
@@ -202,6 +204,114 @@ export class CustomSlider {
 ```
 
 If you try to use a component without specifying all of its required inputs, Angular reports an error at build-time.
+
+`@Output()` allows the Child → Parent communication.
+
+```ts
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <h3>Welcome, {{ name }}!</h3>
+    <button (click)="sendData()">Send Data to Parent</button>
+  `
+})
+export class ChildComponent {
+  @Input() name: string = '';
+
+  @Output() notify = new EventEmitter<string>();
+
+  sendData() {
+    this.notify.emit(`Hello from ${this.name}`);
+  }
+}
+```
+
+```ts
+export class AppComponent {
+  parentMessage = '';
+
+  receiveMessage(data: string) {
+    this.parentMessage = data;
+  }
+}
+```
+
+```html
+<app-child [name]="'Alice'" (notify)="receiveMessage($event)"></app-child>
+<p>Message from Child: {{ parentMessage }}</p>
+```
+
+`@ViewChild and @ContentChild`:- @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or element, while @ContentChild is used to access projected content within a component.
+Angular's ViewChild decorator is used to access child elements or components in a parent component. It allows the parent component to obtain a reference to a child
+component or DOM element and interact with it. It is used by adding the ViewChild decorator to a property in the parent component and specifying the selector of the
+child component or element to be referenced.
+
+Angular's ContentChild decorator is used to access projected content within a component. It allows the component to obtain a reference to a projected component,
+directive, or template variable and interact with it. It is used by adding theContentChild decorator to a property in the component and specifying the selector of
+the projected content to be referenced.
+
+@ViewChild() lets you directly access a child component instance from the parent.
+
+```ts
+@Component({
+  selector: 'app-child',
+  template: `<h3>Child Component</h3>`
+})
+export class ChildComponent {
+  sayHello() {
+    return 'Hello from Child!';
+  }
+}
+```
+
+```ts
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { ChildComponent } from './child/child.component';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <app-child></app-child>
+    <button (click)="callChildMethod()">Call Child Method</button>
+    <p>{{ message }}</p>
+  `
+})
+export class AppComponent implements AfterViewInit {
+  @ViewChild(ChildComponent) child!: ChildComponent;
+
+  message = '';
+
+  ngAfterViewInit() {
+    this.message = this.child.sayHello();
+  }
+
+  callChildMethod() {
+    this.message = this.child.sayHello();
+  }
+}
+```
+
+@ContentChild() - Access Content Passed via <ng-content>.Used when the child does not own the projected content.
+
+```ts
+@Component({
+  selector: 'app-child',
+  template: `<ng-content></ng-content>`
+})
+export class ChildComponent {}
+```
+
+```html
+<app-child>
+  <p #projectedContent>Projected Content inside Child</p>
+</app-child>
+```
+
+```ts
+@ContentChild('projectedContent') content!: any;
+```
 
 ## component lifecycle
 

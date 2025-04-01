@@ -80,15 +80,6 @@ used by injecting the ngZone service into a component or service and using its r
 The "ngZone.runOutsideAngular()" method is used to run a specific code block outside the Angular zone. It helps to prevent unnecessary change detection cycles and
 improves the performance of the code executed within the block.
 
-`@ViewChild and @ContentChild`:- @ViewChild and @ContentChild are used to access child elements or components in Angular. @ViewChild is used to access a single child component or element, while @ContentChild is used to access projected content within a component.
-Angular's ViewChild decorator is used to access child elements or components in a parent component. It allows the parent component to obtain a reference to a child
-component or DOM element and interact with it. It is used by adding the ViewChild decorator to a property in the parent component and specifying the selector of the
-child component or element to be referenced.
-
-Angular's ContentChild decorator is used to access projected content within a component. It allows the component to obtain a reference to a projected component,
-directive, or template variable and interact with it. It is used by adding theContentChild decorator to a property in the component and specifying the selector of
-the projected content to be referenced.
-
 `HostListener`:- The "HostListener" decorator is used to add event listeners to the host element of a component in Angular. It allows the component to listen to and react to events raised on the host element.
 
 `HostBinding`:- The "HostBinding" decorator is used to bind a property of a component to a property of its host element. It allows the component to modify or reflect the state of the host element.
