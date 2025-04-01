@@ -114,7 +114,7 @@ courses = ["course1","course2","course3"]
 
 ```html
 <ul>
-   <li *ngFor="let course of courses">{{ course }}</li>
+   <li *ngFor="let course of courses; index as i">{{ course }}</li>
 </ul>
 ```
 
@@ -126,6 +126,30 @@ multiple templates based on the value of an expression. It is used by adding the
 1. Every view that matches is rendered.
 2. If there are no matches, a view with the ngSwitchDefault directive is rendered.
 3. Elements within the [NgSwitch] statement but outside of any NgSwitchCase or ngSwitchDefault directive are preserved at the location.
+
+The @for block is part of the new control flow syntax introduced in Angular 17.0
+The control flow blocks ( @if , @for , @switch ) are here to replace the 3 structural directives ngIf , ngFor and ngSwitch .
+In the case of the @for block, feature wise they serve the same purpse with a few advantages :
+• No need to import the directive in standalone components
+• Generate a bit less code in the final bundle
+• enable better DX for track by passing a key directly.
+• Make devs more concious about the track functionality by making it required.
+• Nice DX for empty for-loops with the @empty block
+
+```ts
+@for (car of cars; track car.id) {
+<option [value]="car.value">{{car.viewValue}}</option>
+}
+```
+
+instead of *ngFor
+
+```ts
+<option *ngFor="let car of cars" [value]="car.value">{{car.viewValue}}</option>
+```
+
+The @for block makes it easier to loop through items in a collection and manage them efficiently.Unlike NgFor, which needs a trackBy function to identify each item uniquely, @for just needs a simple tracking expression.
+If the collection is empty, you can use the @empty block to display something specific.Also, @for automatically figures out the least amount of changes needed to update the list on the screen, making it more efficient than NgFor, which allowed for custom ways to track changes but @for doesn't support that.
 
 ## Attribute directives
 

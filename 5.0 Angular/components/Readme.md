@@ -202,3 +202,9 @@ export class CustomSlider {
 ```
 
 If you try to use a component without specifying all of its required inputs, Angular reports an error at build-time.
+
+## component lifecycle
+
+A component's lifecycle is the sequence of steps that happen between the component's creation and its destruction. Each step represents a different part of Angular's process for rendering components and checking them for updates over time.
+
+In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
