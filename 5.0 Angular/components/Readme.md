@@ -208,3 +208,23 @@ If you try to use a component without specifying all of its required inputs, Ang
 A component's lifecycle is the sequence of steps that happen between the component's creation and its destruction. Each step represents a different part of Angular's process for rendering components and checking them for updates over time.
 
 In your components, you can implement lifecycle hooks to run code during these steps. Lifecycle hooks that relate to a specific component instance are implemented as methods on your component class. Lifecycle hooks that relate the Angular application as a whole are implemented as functions that accept a callback.
+
+Angular components can get data either from external sources such as HTTP or from other Angular components. In the latter case, they interact with components that have
+data using a public API:
+• @Input(): This is used to pass data into a component.
+• @Output(): This is used to get notified about changes or get data back from a component.
+
+Clarity is a design system that contains a set of UX and UI guidelines for building web applications. It also consists of a proprietary HTML and CSS framework packed with these
+guidelines. Luckily, we do not have to use this framework since Clarity already provides a wide variety of Angular-based UI components that we can use in our Angular applications.
+
+```bash
+ng add @clr/angular
+```
+
+Data grid UI component of the Clarity library is used to display data in a tabular format. A data grid also provides mechanisms for filtering and sorting out of the box.
+Angular components of the Clarity library:
+• clr-datagrid: Defines a table.
+• clr-dg-column: Defines a column of a table. Each column uses the clrDgField directive to bind to the property name of the issue represented by that column. The clrDgField directive provides us with sorting and filtering capabilities without writing even a single line of code in the TypeScript class file.Sorting works automatically only with string-based content. If we want to sort by a different primitive type, we must use the clrDgColType directive and specify the particular type.
+• clr-dg-row: Defines a row of a table. It uses the clrDgItems directive to iterate over the issues and create one row for each issue.
+• clr-dg-cell: Each row contains a collection of clr-dg-cell components to display the value of each column using interpolation. In the last cell, we add the label-danger class when an issue has a high priority to indicate its importance.
+• clr-dg-footer: Defines the footer of a table. In this case, it displays the total number of issues.
