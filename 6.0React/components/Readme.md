@@ -1,6 +1,6 @@
 # Components
 
-Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.Every React app has on root component called *App*.This component rep tye entire application and contains other child components.
+Components are the building blocks of React applications. They let us split the UI into independent, reusable pieces, and think about each piece in isolation.Every React app has on root component called *App*.This component rep the entire application and contains other child components.
 
 Use React snippets to help in development of components
 Components can either be created using the class based approach or a functional approach.

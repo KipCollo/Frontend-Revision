@@ -20,9 +20,7 @@ Angular supports both server-side rendering (SSR) and static site generation inc
 Angular router provides a feature-rich navigation toolkit, route guards, data resolution, lazy-loading, and much more.
 Angular form module provides a standardized system for form participation and validation.
 
-Angular applications are created and developed using a command-line tool made by the
-Angular team called the `Angular CLI`.It automates many development tasks, such as
-scaffolding, testing, and deploying an Angular application, which would take a lot of time to configure manually.
+Angular applications are created and developed using a command-line tool made by the Angular team called the `Angular CLI`.It automates many development tasks, such as scaffolding, testing, and deploying an Angular application, which would take a lot of time to configure manually.
 
 ## Angular Modules
 
@@ -369,3 +367,19 @@ The Angular tooling ecosystem is full of extensions and utilities that can help 
   B. Upgrading Angular dependencies to next version
   C. Upgrading all npm dependencies.
 5. Material Icon Theme - Contains ton of icons that are based on Material Design.It can understand type of each file in your project and display related icon automatically.
+
+## Deployment
+
+There are 2 methods:-
+
+1. Copy/paste Deployment - Large sizes of node_modules and bundlers.
+
+Optimization Techniques:
+
+1. Minification
+2. Uglification
+3. Bundling
+4. Dead code elimination
+5. Ahead-of-time(AOT) compilation.
+
+The `ng build -prod` produces highly optimized bundles.
