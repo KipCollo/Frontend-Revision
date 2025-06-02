@@ -78,3 +78,21 @@ The web server for Node is **http-server**
 ```bash
 sudo npm i -g http-server
 ```
+
+## Frontend Libraries
+
+1. Animate On Scroll(AOS):- brings website to life by transitioning elements as they appear during scrolling.
+2. Chart.js - Versatile data visualization library that supports various charts types including pie,bar,line..
+3. Luxon - Modern successor of Mement.js,offering robust set of utilites for working with dates and times.
+4. SweetAlert2 - highly customizable libarary for creating modals and alerts.
+5. Floating UI(Popper.js) - It is a library for creating dynamic and responsive tooltips,pop-overs,dropdowns and other floating widgets.
+6. FullCalender - Is an exhaustive calender library offering extensive customization options.Supports features like dragging,resizing and event handling making it ideal for scheduling applications.
+7. Axios - For handling HTTP requests.
+8. D3.js - Ideal for complex and interactive Data visualizations.Perfect for creating Data-Driven Documents using HTML,SVG and CSS.
+9. TensorFlow.Js - Allows you to run ML Models in the Browser,making it easy to intergrate ML functionalities into Web apps.
+10. Socket.io - For real-time,event-driven communication.Essential for applications like Chat systems or Live Notifications.
+
+`Ui Libraries`:-
+
+1. React - Frontend library for building user interfaces.
+2. Svelte - Uses compile-time,resulting in faster runtime performance and smaller bundles.Used fro building web applications.

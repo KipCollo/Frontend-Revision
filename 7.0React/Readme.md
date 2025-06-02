@@ -126,3 +126,92 @@ import ReactDOM from "react-dom"//renders element in the DOM
 const element = <h1>Hello World</h1>
 ReactDOM.render(element,document.getElementById("root"));//element is referenced in a div inside index.html
 ```
+
+## React versions
+
+✅ React 0.3 – 0.14 (2013–2015)
+
+Initial Release & Core Concepts
+
+    JSX: JavaScript syntax extension for describing UI (HTML-like in JS).
+
+    Components: Reusable, stateful UI elements.
+
+    Virtual DOM: Efficient UI updates.
+
+    Unidirectional Data Flow: Props from parent → child.
+
+    ReactDOM.render() introduced for mounting.
+
+React 0.14 (2015)
+
+    Split: react (core) and react-dom (DOM rendering).
+
+    Stateless Functional Components introduced.
+
+    PureComponent introduced for performance optimization.
+
+⚛️ React 15 (2016)
+
+    Custom DOM Attributes: Non-standard attributes are passed to the DOM (e.g., data-*, aria-*).
+
+    Improved SVG Support
+
+    Development & Production Builds separated.
+
+🧬 React 16 (2017) – “Fiber”
+
+    New Core Architecture (Fiber): Enables async rendering.
+
+    Fragments: Return multiple elements (<> </>) without a parent div.
+
+    Error Boundaries: Catch errors in component trees.
+
+    Portals: Render children outside the parent DOM hierarchy.
+
+    render() can return strings, arrays, and booleans.
+
+🧩 React 16.8 (2019) – Hooks
+
+    Hooks API introduced:
+
+        useState, useEffect, useContext, useReducer, etc.
+
+    Replaces many class component patterns with functional approaches.
+
+    Makes logic reuse easier without HOCs or render props.
+
+🔄 React 17 (2020) – No New Features
+
+    Focused on:
+
+        Gradual upgrades
+
+        Improved event delegation to root instead of document
+
+    New JSX Transform: No need to import React in every file.
+
+⚡ React 18 (2022) – Concurrent Features
+
+    Automatic Batching of state updates.
+
+    createRoot() API replaces ReactDOM.render() for concurrent rendering.
+
+    useTransition, useDeferredValue for smooth interactions.
+
+    Suspense for Data Fetching support expanded.
+
+    Streaming SSR with support for selective hydration.
+
+🔬 React 19 (RC as of 2024)
+
+    New use() hook for async/await in components (Suspense-first APIs).
+
+    New Form Features: useFormStatus, useFormState
+
+    Actions API: For server mutations.
+
+    React Compiler (experimental): Automatic memoization and optimization.
+
+    Improved Server Components Support
+
