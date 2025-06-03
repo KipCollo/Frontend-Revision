@@ -8,6 +8,10 @@ Routing in React can be handled using libraries like React Router. React Router 
 
 React router is the most famous library when it comes to implementing routing in React applications.React Router makes use of component structure to invoke components,that display relevant info.It also permits users to make use of browser functions e.g back button and refresh page while maintaining original display that app provides.
 
+React Router is a popular library for handling routing in React applications. It allows
+you to define different routes, render components based on the current URL, and
+navigate between different views in a single-page application.
+
 React Router makes use of component structure to invoke components,that display relevant information.It also permits users to make use of browser functions like back button and refresh page while maintaining original display that app provides.
 
 To use react-router library, you install it:

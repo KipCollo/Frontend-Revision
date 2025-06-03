@@ -5,6 +5,14 @@ Components are the building blocks of React applications. They let us split the 
 Use React snippets to help in development of components
 Components can either be created using the class based approach or a functional approach.
 
+Functional components are stateless and are typically written as plain JavaScript functions. They are simpler and easier to test. Class components, on the other hand, have a state, can use lifecycle methods, and are written as ES6 classes.
+
+A controlled component is a component where the form data is handled by React components. The React component that renders the form also controls what happens
+in that form on subsequent user input.
+
+Higher-order components are functions that take a component and return a new component with additional functionality. They are used for code reuse, abstraction,
+and sharing common logic between components.
+
 ## Class Components
 
 These components are simple classes (made up of multiple functions that add functionality to the application). All class based components are child classes for the Component class of ReactJS.These components are JavaScript Classes that extends React Component and have their own state and lifecycle methods.

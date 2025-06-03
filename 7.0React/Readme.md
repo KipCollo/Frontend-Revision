@@ -2,12 +2,16 @@
 
 React is a JavaScript library for building user interfaces.It uses component based architecture.It is declarative.Built by facebook.It allows developers to create reusable UI components and efficiently update the UI when the data changes.
 
+React.js is a JavaScript library used for building user interfaces. It allows developers to create reusable UI components and efficiently update the UI when the data changes.
+
 ## Key Features of React.js
 
 - Virtual DOM:- React uses a Virtual DOM, a lightweight replica of the browser's DOM, which enables fast and efficient rendering.
 - Reusable Components:- Components in React enable developers to create reusable interfaces, which can be easily modified and reused throughout the application.
 - Unidirectional Data flow:- React features a unidirectional data flow, which makes it easier to debug and understand the application’s data flow.
 - JSX Syntax:- React uses JSX - JavaScript syntax extension, which enables the creation of component hierarchies in a readable and streamlined way.
+
+The virtual DOM is a lightweight copy of the actual DOM. React uses the virtual DOM to optimize and speed up the process of updating the real DOM by comparing the current virtual DOM with the previous one.
 
 ## How React.js Compares to Other Frameworks
 
@@ -127,6 +131,12 @@ const element = <h1>Hello World</h1>
 ReactDOM.render(element,document.getElementById("root"));//element is referenced in a div inside index.html
 ```
 
+The constructor is used to initialize the state and bind event handlers in a class component. It is called before the component is mounted.
+
+keys in React lists - Keys are used to give a unique identity to each element in a list of components. They help React efficiently update and re-render the components by identifying which items have changed, been added, or removed.
+
+`Context` provides a way to pass data through the component tree without having to pass props manually at every level. It is used for sharing data that can be considered "global" for a tree of React components.
+
 ## React versions
 
 ✅ React 0.3 – 0.14 (2013–2015)
@@ -215,3 +225,62 @@ React 0.14 (2015)
 
     Improved Server Components Support
 
+React Native is a framework for building native mobile applications using React. It
+allows developers to write mobile apps using JavaScript and leverage the power of
+React to create reusable UI components.
+
+React is a JavaScript library for building user interfaces, primarily for web
+applications, while React Native is a framework for building native mobile
+applications. React Native uses native components and APIs specific to each
+platform.
+
+React Native components are similar to React components but are built specifically
+for mobile app development. They include components for handling user input,
+displaying data, navigating between screens, and more.
+
+StyleSheet is a built-in component in React Native that allows you to define styles for
+your components. It provides a way to write styles using JavaScript objects or create
+reusable style constants.
+
+The difference between state and props in React Native is the same as in React.js.
+State is managed within a component and can be changed, while propsare passed
+to a component from its parent and cannot be modified directly by the component
+receiving them.
+
+AsyncStorage is a simple, asynchronous, persistent key-value storage system
+provided by React Native. It allows you to store data on the device's disk and retrieve
+it later, making it useful for caching data or storing user preferences.
+
+Expo is a set of tools, libraries, and services built on top of React Native. It provides a
+simplified development workflow, pre-configured native modules, and access to
+device features, allowing developers to build and deploy React Native apps faster.
+
+React DevTools is a browser extension that allows you to inspect and debug React
+component hierarchies. It provides a set of tools for inspecting components,
+examining props and state, and profiling performance.
+
+React Fragments allow you to group multiple elements without adding an extra node
+to the DOM. They are useful when you need to return multiple elements from a
+component's render method without introducing unnecessary wrapping elements.
+
+React.memo() is a higher-order component that memoizes the rendering of a
+functional component, similar to the shouldComponentUpdate() lifecycle method for
+class components. It prevents unnecessary re-renders of the component if its props
+have not changed.
+
+A controlled component is a component where form data is handled by React stateand is fully controlled by React. An uncontrolled component, on the other hand,
+manages its own stateand stores form data internally without relying on React state.
+
+Error boundaries are React components that catch JavaScript errors during
+rendering, in lifecycle methods, and in constructors of their child component tree.
+They help to prevent the entire application from crashing and allow for graceful error
+handling.
+
+React.StrictMode is a component that helps highlight potential problems in an
+application. It enables additional checks and warnings in the development mode to
+help identify and address potential bugs and deprecated features.
+
+React.Fragment is a built-in component in React that allows you to group multiple
+elements without adding an extra node to the DOM. It is useful when you need to
+return multiple elements from a component's render method without introducing
+unnecessary wrapping elements.

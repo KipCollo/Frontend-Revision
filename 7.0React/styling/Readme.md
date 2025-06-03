@@ -29,3 +29,7 @@ Chakra UI is a simple, modular and accessible component library that gives you t
 ## CSS Modules
 
 CSS files in which all class names and animation names are scoped locally by default.
+
+There are multiple ways to style components in React, including inline styles, using
+CSS classes with className, CSS-in-JS libraries like styled-components, and using
+preprocessor-based solutions like Sass or Less.
