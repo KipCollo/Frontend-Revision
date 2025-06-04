@@ -9,6 +9,9 @@ Hooks have some rules: They must be used only at the top level of a function com
 State is an object that holds data and determines how a component renders and behaves. It is private and fully controlled by the component itself.
 State is managed within a component and can be changed, while props are passed to a component from its parent and cannot be modified directly by the component receiving them.
 
+State Management is the implementation of a design pattern to synchronize the state of the application throghout all components of the application.
+State management solutions includes:- React API:- useState and useReducer,context API,Redux,MobX,VueX,Recoil,Zustand
+
 Hooks are functions that allow you to use state and other React features without writing a class. They were introduced in React 16.8 to provide a simpler and more readable way to write React components.
 
 Hooks have some rules: They must be used only at the top level of a function
@@ -103,7 +106,7 @@ In Strict Mode,React will call your initializer function twice in order to help 
 const [name, setName] = useState("Coolins");
 
 function handleClick(){
-   setName("Kosge");
+   setName("Kosgei");
 }
 ```
 
